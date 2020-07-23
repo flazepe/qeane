@@ -10,7 +10,7 @@ module.exports = {
         } else {
             member = msg.member
         }
-        const premium = client.db.get(`premium.${user.id}.active`)
+        let premium = client.db.get(`premium.${user.id}.active`)
         if (!member) return msg.channel.send('Usage: ``ui [user id/@mention]')
         let user=member.user
         let badges = require('../functions/badges')(member)
