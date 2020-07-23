@@ -1,4 +1,2 @@
 node_modules
 qeane.sqlite
-config.json
-./src/setup/webhooks.js
