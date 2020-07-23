@@ -11,6 +11,6 @@ module.exports = function duration(duration) {
     let seconds = totalSeconds % 60;
     minutes=minutes>=10?minutes:"0"+minutes
     seconds=seconds>=10?seconds:"0"+seconds
-    return `${hours}:${minutes}:${secondste}`
+    return `${hours}:${minutes}:${seconds}`
     
 }
