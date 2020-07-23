@@ -36,8 +36,8 @@ app.post('/webhooks/dbl', function(req,res) {
     client.db.set(`votes.${data.user}`, Date.now())
     console.log(`${data.user} just voted!`)
 })
-app.get('/deploy/git/qeanebestbotsmhtafqt', () =>{
-  require('child_process').exec("git pull https://github.com/lumap/qeane master")
+app.post('/webhooks/gad/qeaneIsTheBestOWOWATSDISLINKILy', () =>{
+  require('git-auto-deploy').deploy()
 })
 
 app.listen(3002, function() {
