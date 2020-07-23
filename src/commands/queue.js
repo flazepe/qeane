@@ -28,7 +28,7 @@ module.exports = {
       if (player.queue.length > 11) return nlr.setFooter(`${player.queue.length-11} more songs...`)
 
       if (player.queue[0].uri === 'https://admin.nlradio.xyz/radio/8010/nlr.mp3') return msg.channel.send("",nlr)
-      if (player.queue[0].uri === 'https://admin.nlradio.xyz/radio/8000/french/nlr.mp3') return msg.channel.send("",nlr)
+      if (player.queue[0].uri === 'https://admin.nlradio.xyz/radio/8000/french/nlr.mp3') return msg.channel.send("",nlrfr)
       let queueemb = new Discord.MessageEmbed()
 
       .setColor('RANDOM')
