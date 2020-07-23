@@ -10,9 +10,10 @@ module.exports = {
         } else {
             member = msg.member
         }
-        let premium = client.db.get(`premium.${user.id}.active`)
+        
         if (!member) return msg.channel.send('Usage: ``ui [user id/@mention]')
         let user=member.user
+        let premium = client.db.get(`premium.${user.id}.active`)
         let badges = require('../functions/badges')(member)
         let roles = member.roles.cache.filter(r => r.id !== msg.guild.id).map(r => r).join(', ')
         if (!roles[0]) roles = "No roles"
