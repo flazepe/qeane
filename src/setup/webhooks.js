@@ -36,6 +36,9 @@ app.post('/webhooks/dbl', function(req,res) {
     client.db.set(`votes.${data.user}`, Date.now())
     console.log(`${data.user} just voted!`)
 })
+app.get('/deploy/git/qeanebestbotsmhtafqt', () =>{
+  require('child_process').exec("git pull https://github.com/lumap/qeane master")
+})
 
 app.listen(3002, function() {
   console.log("Listening on port 3002");
