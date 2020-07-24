@@ -6,7 +6,7 @@ const clientOptions = {
 }
 
 const Discord = require('discord.js-light'), client = new Discord.Client(clientOptions), cooldown = new Map()
-client.options.ws.properties.$browser = "Discord iOS"
+// client.options.ws.properties.$browser = "Discord iOS"
 const msgDelete = require('./src/events/msgDelete.js')
 const msgEvent = require('./src/events/msg.js')
 const guildWebhook = new Discord.WebhookClient("735514604603441243","ZUYCPoCUoB453RgagMsY3qjgxXByuyUcZdOEIVktwdPgct_cL0GS1ZrIhlHr9d5G_-en")
