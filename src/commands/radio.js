@@ -34,7 +34,20 @@ module.exports = {
             });
         }
 
-        else if (args[0].startsWith('key')){
+        else if (args[0] === 'key'){
+            await client.music.search('https://stream.livida.net/keyfm', message.author).then(async res => {
+                switch (res.loadType) {
+                case 'TRACK_LOADED':
+                    player.queue.add(res.tracks[0]);
+                    message.channel.send(`Added ${res.tracks[0].author}`)
+                    if (!player.playing) {
+                        player.play();
+                    }
+                }
+            });
+        }
+
+        else if (args[0] === 'keyfm'){
             await client.music.search('https://stream.livida.net/keyfm', message.author).then(async res => {
                 switch (res.loadType) {
                 case 'TRACK_LOADED':
