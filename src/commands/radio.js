@@ -60,7 +60,8 @@ module.exports = {
             });
         }
 
-        const filter = {
+      else {
+          const filter = {
 			limit: 1,
 			by: 'name',
 			searchterm: query,
@@ -84,5 +85,6 @@ module.exports = {
                 }
             }
         });
+    }
     }
 }
