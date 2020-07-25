@@ -21,6 +21,19 @@ module.exports = {
             selfDeaf: true
         });
 
+        if (args[0] === 'Upbeat'){
+            await client.music.search('https://live.upbeat.pw/', message.author).then(async res => {
+                switch (res.loadType) {
+                case 'TRACK_LOADED':
+                    player.queue.add(res.tracks[0]);
+                    message.channel.send(`Added ${res.tracks[0].author}`)
+                    if (!player.playing) {
+                        player.play();
+                    }
+                }
+            });
+        }
+
         const filter = {
 			limit: 1,
 			by: 'name',
