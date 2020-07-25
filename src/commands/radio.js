@@ -21,7 +21,7 @@ module.exports = {
             selfDeaf: true
         });
 
-        if (args[0] === 'Upbeat'){
+        if (args[0].toLowerCase() === 'Upbeat'){
             await client.music.search('https://live.upbeat.pw/', message.author).then(async res => {
                 switch (res.loadType) {
                 case 'TRACK_LOADED':
@@ -34,7 +34,7 @@ module.exports = {
             });
         }
 
-        else if (args[0] === 'key'){
+        else if (args[0].toLowerCase() === 'key'){
             await client.music.search('https://stream.livida.net/keyfm', message.author).then(async res => {
                 switch (res.loadType) {
                 case 'TRACK_LOADED':
@@ -47,7 +47,7 @@ module.exports = {
             });
         }
 
-        else if (args[0] === 'keyfm'){
+        else if (args[0].toLowerCase() === 'keyfm'){
             await client.music.search('https://stream.livida.net/keyfm', message.author).then(async res => {
                 switch (res.loadType) {
                 case 'TRACK_LOADED':
