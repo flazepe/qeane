@@ -31,7 +31,6 @@ module.exports = {
           {name: "Server region", value: guild.region, inline: true},
           {name: "Member count", value: guild.memberCount, inline: true},
           {name: "Large server", value: guild.large?"Yes":"No", inline: true},
-          {name: "Default notification level", value: guild.defaultmsgNotifications, inline: true},
           {name: "Owner", value: owner.nickname?`${owner.nickname} (${owner.user.tag})`:owner.user.tag, inline: true},
           {name: "Created at", value: guild.createdAt, inline: true},
           {name: "Role count", value: guild.roles.cache.size, inline: true}, 
