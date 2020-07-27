@@ -37,13 +37,10 @@ module.exports = {
           {name: "Created at", value: guild.createdAt, inline: true},
           {name: "Role count", value: guild.roles.cache.size, inline: true}, 
           {name: "Chanels stats", value: `Text: ${channels.text}, Voice: ${channels.voice}, Categories, ${channels.categories}, Unknown: ${channels.unknow}`, inline: true},
-          {name: "Emoji count", value: guild.emojis.cache.size,inline: true},
-    
-          {name: "Emoji list", value: emojilist?emojilist.length>1024?`Too much emojis to display. Try doing \`\`serverinfo emoji list\`\``:emojilist:"No emojis", inline: true},
+          {name: "Emoji count", value: guild.emojis.cache.size ,inline: true},
           {name: "Channel list", value: channellist.length>1024?`Too much channels to display. Try doing \`\`serverinfo channel list\`\``:channellist, inline: channellist.length>1024?true:false},  
           {name: "Role list", value: rolelist.length>1024?`Too much roles to display. Try doing \`\`serverinfo role list\`\``:rolelist, inline: rolelist.length>1024?true:false}
       ]
-
       if (args.join(' ')) {
         args=args.join(' ').toLowerCase()
         for (let i = 0;i<fields.length;i++) {
