@@ -39,10 +39,9 @@ module.exports = {
           {name: "Chanels stats", value: `Text: ${channels.text}, Voice: ${channels.voice}, Categories, ${channels.categories}, Unknown: ${channels.unknow}`, inline: true},
           {name: "Emoji count", value: guild.emojis.cache.size,inline: true},
     
-          {name: "Emoji list", value: emojilist?emojilist.length>1024?`Too much emojis to display. Try doing \`\`${client.prefixes.get(msg.guild.id) || "info-"}serverinfo emoji list\`\``:emojilist:"No emojis", inline: true},
-          {name: "Channel list", value: channellist.length>1024?`Too much channels to display. Try doing \`\`${client.prefixes.get(msg.guild.id) || "info-"}serverinfo channel list\`\``:channellist, inline: channellist.length>1024?true:false},  
-          {name: "Role list", value: rolelist.length>1024?`Too much roles to display. Try doing \`\`${client.prefixes.get(msg.guild.id) || "info-"}serverinfo role list\`\``:rolelist, inline: rolelist.length>1024?true:false}
-          
+          {name: "Emoji list", value: emojilist?emojilist.length>1024?`Too much emojis to display. Try doing \`\`serverinfo emoji list\`\``:emojilist:"No emojis", inline: true},
+          {name: "Channel list", value: channellist.length>1024?`Too much channels to display. Try doing \`\`serverinfo channel list\`\``:channellist, inline: channellist.length>1024?true:false},  
+          {name: "Role list", value: rolelist.length>1024?`Too much roles to display. Try doing \`\`serverinfo role list\`\``:rolelist, inline: rolelist.length>1024?true:false}
       ]
 
       if (args.join(' ')) {
