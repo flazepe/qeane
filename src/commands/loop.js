@@ -12,7 +12,7 @@ module.exports = {
         if (!types.includes(type)) return msg.reply("Usage: ``loop <queue/track/disable>``")
         switch (msg.args[0]) {
             case "queue":
-                player.setQueueRepet(true)
+                player.setQueueRepeat(true)
                 msg.reply("The queue will now loop!")
                 return;
             case "track":
