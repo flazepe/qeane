@@ -12,7 +12,7 @@ module.exports = {
             serverQueue.player.stopTrack()
         } else {
             let amount = parseInt(msg.args[0])
-            if (!amount || amount < 1 || amount>=player.queue.length) return msg.reply("Invalid amount of songs to skip provided!")
+            if (!amount || amount < 1 || amount>=serverQueue.songs.length) return msg.reply("Invalid amount of songs to skip provided!")
             serverQueue.songs.splice(0,amount-1)
             msg.reply("Musics skipped!").then(m => {m.delete({timeout: 15000})})
             serverQueue.player.stopTrack()
