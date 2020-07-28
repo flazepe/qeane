@@ -3,8 +3,6 @@ module.exports = {
     aliases: ['p'],
     category: "music",
     async execute (client,msg) {
-        let premium = client.db.get(`premium.${msg.author.id}`)
-        if (!premium || !premium.active) return msg.reply("Woops, music is a premium-only feature!")
         const { channel } = msg.member.voice
         if (!channel) return msg.reply("Woops, you doesn't seem to be in a voice channel!")
         await channel.fetch()
