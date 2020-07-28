@@ -28,7 +28,7 @@ module.exports = {
             {name: "Boosting?", value: member.premiumSinceTimestamp?"Yes":"No", inline: true},
             {name: "Boosting since", value: member.premiumSinceTimestamp?new Date(member.premiumSinceTimestamp):"Not boosting", inline: true},
             {name: "Permissions", value: permissions, inline: false},
-            {name: "Role list", value: roles.length>1024?`Too much roles to display. Try using \`\`userinfo ${user.id} role list\`\``:roles, inline: roles.length>1024?true:false},
+            {name: "Role list", value: roles.length>1024?`Too much roles to display. Try using \`\`${client.prefixes.get(msg.guild.id) || "info-"}userinfo ${user.id} role list\`\``:roles, inline: roles.length>1024?true:false},
             {name: "Premium", value: premium}
         ]
         

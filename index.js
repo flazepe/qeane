@@ -1,66 +1,40 @@
-const clientOptions = {
-  disableMentions: "everyone",
-  token: require('./config.json').token,
-  ws:{intents:['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']},
-  enablePermissions: true
+const { Client } = require('discord.js-light')
+const { Shoukaku } = require('shoukaku')
+const startBot = require('./src/index')
+
+const LavalinkServer = [{ name: 'node', host: "95.111.235.134", port: 7777, auth: "Zk9MEhPVf0V9iVeLN5Uo5m0cXlQa3j", }];
+const ShoukakuOptions = { moveOnDisconnect: false, resumable: false, resumableTimeout: 30, reconnectTries: 2, restTimeout: 10000 };
+
+class Qeane extends Client {
+    constructor(opts) {
+        super(opts);
+        this.shoukaku = new Shoukaku(this, LavalinkServer, ShoukakuOptions);
+    }
+
+    login(token) {
+        this._setupShoukakuEvents();
+        this._setupClientEvents();
+        return super.login(token);
+    }
+
+    _setupShoukakuEvents() {
+        this.shoukaku.on('ready', (name) => console.log(`Lavalink Node: ${name} is now connected`));
+        // You must handle error event
+        this.shoukaku.on('error', (name, error) => console.log(`Lavalink Node: ${name} emitted an error.`, error));
+        this.shoukaku.on('close', (name, code, reason) => console.log(`Lavalink Node: ${name} closed with code ${code}. Reason: ${reason || 'No reason'}`));
+        this.shoukaku.on('disconnected', (name, reason) => console.log(`Lavalink Node: ${name} disconnected. Reason: ${reason || 'No reason'}`));
+    }
+
+    _setupClientEvents() {
+       startBot(this)
+    }
 }
 
-const Discord = require('discord.js-light'), client = new Discord.Client(clientOptions), cooldown = new Map()
-// client.options.ws.properties.$browser = "Discord iOS"
-const msgDelete = require('./src/events/msgDelete.js')
-const msgEvent = require('./src/events/msg.js')
-const guildWebhook = new Discord.WebhookClient("735514604603441243","ZUYCPoCUoB453RgagMsY3qjgxXByuyUcZdOEIVktwdPgct_cL0GS1ZrIhlHr9d5G_-en")
-//https://ptb.discordapp.com/api/webhooks/735514604603441243/ZUYCPoCUoB453RgagMsY3qjgxXByuyUcZdOEIVktwdPgct_cL0GS1ZrIhlHr9d5G_-en
-const errorWebhook = new Discord.WebhookClient("735549440445644915","uxgxWqcryNLb_MLYpDuqWEk6nfZWd8JGAYBac2297p2nSOsLF3S5ThvWGLImv-l8nppT")
-//https://ptb.discordapp.com/api/webhooks/735549440445644915/uxgxWqcryNLb_MLYpDuqWEk6nfZWd8JGAYBac2297p2nSOsLF3S5ThvWGLImv-l8nppT
-client.errorWebhook=errorWebhook
-
-client.on('guildCreate', async guild => {
-  if (guild.id === '538361750651797504') return guild.leave()
-  guildWebhook.send(`==JOINED SERVER==\n\nName: **${guild.name}**\nID: **${guild.id}**\nNew server count: **${client.guilds.cache.size}**`)
-})
-
-client.on("guildDelete",async guild => {
-  guildWebhook.send(`==LEFT SERVER==\n\nName: **${guild.name}**\nID: **${guild.id}**\nNew server count: **${client.guilds.cache.size}**`)
-})
-
-client.on('messageDelete', (msg) => { 
-  msgDelete(client,msg)
-}) 
-
-client.on('ready', async () => {
-  client.user.setActivity(`qeane help`)
-  setInterval(function(){
-    client.user.setActivity(`qeane help`)
-  },1800000);
-
-  console.log("=====___==========================")
-  console.log("=== / _ \\  ___  __ _ _ __   ___ ===")
-  console.log("===| | | |/ _ \\/ _` | '_ \\ / _ \\===")
-  console.log("===| |_| |  __/ (_| | | | |  __/===")
-  console.log("=== \\__\\_\\\\___|\\__,_|_| |_|\\___|===")
-  console.log("===================================")
-  try {
-  require('./src/setup/client')(client)
-  require('./src/setup/erela')(client)
-  require('./src/setup/sliceEvery')()
-  console.log("Qeane is ready!")
-  require('./src/setup/webhooks')(client)
-  } catch (e) {
-    console.log(e)
-    client.errorWebhook.send("ERROR: "+e)
-  }
-})
-
-client.on("reconnecting", () => {
-  console.log("Reconnecting!");
-});
-
-client.on("disconnect", () => {
-  console.log("Disconnect!");
-});
-
-
-client.on('message', async msg => {
-  msgEvent(client,msg,cooldown)
-});
+new Qeane({
+    disableMentions: "everyone",
+    token: require('./config.json').token,
+    ws:{intents:['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']},
+    enablePermissions: true
+  })
+    .login('NzM1ODQ2ODg0NjMwOTg2NzU3.XxmZcw.OLt1YvOaOgWWE4D3zHqVJQLYNtU')
+    .catch(console.error);

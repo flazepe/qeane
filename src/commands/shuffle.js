@@ -2,11 +2,11 @@ module.exports = {
     name: "shuffle",
     category: "music",
     async execute (client,msg) {
-        let player = client.music.players.get(msg.guild.id)
-        if (!player) return msg.reply("Woops, nothing is playing right now!")
+        let serverQueue = client.queue.get(msg.guild.id)
+        if (!serverQueue) return msg.reply("Woops, nothing is playing right now!")
         if (!msg.member.voice.channel) return msg.reply("Woops, you have to be in a voice channel!")
         let vc = await msg.member.voice.channel.fetch()
-        if (player.voiceChannel.id !== vc.id) return msg.reply("Woops, you have to be in my voice channel!")
+        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply("Woops, you have to be in my voice channel!")
         function shuffle(a) {
             for (let i = a.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -14,7 +14,7 @@ module.exports = {
             }
             return a;
         }
-        player.queue=[player.queue[0],...shuffle(player.queue)]
+        serverQueue.songs=[serverQueue.songs[0],...shuffle(serverQueue.songs)]
         msg.reply('Queue shuffled!')
     }
 }

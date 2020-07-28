@@ -6,6 +6,7 @@ const Discord = require('discord.js')
 module.exports = function (client) {
     const fs = require('fs'), config = require('../../config.json'), autoload = require('auto-load'), quick = require('quick.db-plus'), ksoft = require('@ksoft/api')
 
+client.queue = new Map()
 client.config = config
 client.snipes = new Discord.Collection()
 client.functions = autoload('./src/functions')
