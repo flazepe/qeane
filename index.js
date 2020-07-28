@@ -36,5 +36,5 @@ new Qeane({
     ws:{intents:['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']},
     enablePermissions: true
   })
-    .login('NzM1ODQ2ODg0NjMwOTg2NzU3.XxmZcw.OLt1YvOaOgWWE4D3zHqVJQLYNtU')
+    .login('NzI3MTYzMDk3MDI2MDAzMDA0.Xvn1aA.7kNYBI9di_udF8KOyE7YFXBUe1c')
     .catch(console.error);
