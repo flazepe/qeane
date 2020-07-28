@@ -107,6 +107,7 @@ async function play(serverQueue,client,player) {
             serverQueue.songs=[...serverQueue.songs,serverQueue.songs[0]]
             break;
     }
+    if (serverQueue.npmsg) {serverQueue.npmsg.delete()}
     if (!serverQueue.songs[0]) {
         serverQueue.textChannel.send("Queue has ended, leaving voice channel...")
         player.disconnect()
@@ -115,7 +116,6 @@ async function play(serverQueue,client,player) {
     }
     let track = serverQueue.songs[0]
     await player.playTrack(track)
-    if (serverQueue.npmsg) {serverQueue.npmsg.delete()}
     let time = client.functions.duration(track.info.length)
     let m = await serverQueue.textChannel.send({embed: {
     color: client.functions.randomColor(),
