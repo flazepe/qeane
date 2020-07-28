@@ -47,7 +47,8 @@ module.exports = {
                 textChannel: msg.channel,
                 voiceChannel: channel,
                 npmsg: null,
-                player: player
+                player: player,
+                bassboost: 0
             }
             switch (data.type) {
                 case "PLAYLIST":
@@ -114,6 +115,8 @@ async function play(serverQueue,client,player) {
     }
     let track = serverQueue.songs[0]
     await player.playTrack(track)
+    await player.setEqualizer(client.functions.getEq(serverQueue.bassboost))
+
     let time = client.functions.duration(track.info.length)
     let m = await serverQueue.textChannel.send({embed: {
     color: client.functions.randomColor(),
