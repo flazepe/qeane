@@ -11,7 +11,7 @@ module.exports = {
         let gain = parseInt(msg.args[0])
         if (isNaN(gain)) return msg.reply("Please provide a valid number between 0 and 8")
         if (gain < 0 || gain > 8) return msg.reply("Please provide a number between 0 and 8!");
-        serverQueue.player.setEquallizer(client.functions.getEq(gain)) //alright let's test (bassboost i mea)
+        serverQueue.player.setEqualizer(client.functions.getEq(gain)) //alright let's test (bassboost i mea)
         msg.reply("Bass boosted! Please wait a few seconds for the effect to apply") //
     }
 }
