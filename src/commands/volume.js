@@ -14,6 +14,6 @@ module.exports = {
         if (vol<1 || vol>250) return msg.reply("Woops, please make sure to provide a volume between 1 and 250!")
         serverQueue.player.setVolume(vol)
         serverQueue.volume=vol
-        msg.reply(`volume set to **${vol}**!`)
+        msg.reply(`Volume set to **${vol}**!`)
     }
 }
