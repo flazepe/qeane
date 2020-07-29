@@ -32,7 +32,7 @@ module.exports = async (client, msg, cooldown) => {
       })
     }
   }
-  msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).trim()
+  msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1)
   const command = client.commands.get(commandName)
     || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
   if (!command) return;
