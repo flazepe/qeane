@@ -13,6 +13,7 @@ module.exports = function (client) {
     if (client.queue.size > 0) {
       client.queue.forEach(q => {
         if (!q.songs[0].info.isStream && q.npmsg) {
+          let track = q.songs[0]
           q.npmsg.edit({
             embed: {
               color: client.functions.randomColor(),
