@@ -145,7 +145,7 @@ async function play(serverQueue, client, player) {
 
     })
     if (!track.info.isStream) {
-        serverQueue.npmsginterval = setInterval(() => {
+        let interval = setInterval(() => {
             m.edit({
                 embed: {
                     color: m.embeds[0].color,
@@ -154,7 +154,8 @@ async function play(serverQueue, client, player) {
                 }
 
             })
-        }, 10000)
+        }, 5000)
+        serverQueue.npmsginterval = interval
     }
     serverQueue.npmsg = m
 }
