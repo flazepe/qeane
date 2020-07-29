@@ -144,18 +144,6 @@ async function play(serverQueue, client, player) {
         }
 
     })
-    if (!track.info.isStream) {
-        let interval = setInterval(() => {
-            m.edit({
-                embed: {
-                    color: m.embeds[0].color,
-                    title: "Now playing:",
-                    description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(serverQueue.player.position)}/${time}**\nArtist: **${track.info.author}**`,
-                }
 
-            })
-        }, 5000)
-        serverQueue.npmsginterval = interval
-    }
     serverQueue.npmsg = m
 }
