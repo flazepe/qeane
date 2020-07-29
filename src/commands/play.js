@@ -154,7 +154,7 @@ async function play(serverQueue, client, player) {
                 }
 
             })
-        })
+        }, 5000)
     }
     serverQueue.npmsg = m
 }
