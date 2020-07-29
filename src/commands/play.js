@@ -124,8 +124,9 @@ async function play(serverQueue, client, player) {
             break;
     }
     if (serverQueue.npmsg) { serverQueue.npmsg.delete() }
-    if (!serverQueue.songs[0]) {
-        serverQueue.textChannel.send("Queue has ended, leaving the voice channel...")
+    await serverQueue.voiceChannel.fetch()
+    if (!serverQueue.songs[0] || serverQueue.voiceChannel.members.size < 2) {
+        serverQueue.textChannel.send("Queue has ended or no one is in the voice channel, leaving...")
         player.disconnect()
         client.queue.delete(serverQueue.textChannel.guild.id)
         return;

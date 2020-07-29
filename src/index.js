@@ -25,7 +25,7 @@ module.exports = function (client) {
         }
       })
     }
-  }, 10000)
+  }, 5000)
 
   client.on('guildCreate', async guild => {
     if (guild.id === '538361750651797504') return guild.leave()
