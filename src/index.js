@@ -16,7 +16,7 @@ module.exports = function (client) {
           let track = q.songs[0]
           q.npmsg.edit({
             embed: {
-              color: client.functions.randomColor(),
+              color: q.npmsg.embeds[0].color,
               title: "Now playing:",
               description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}**\nArtist: **${track.info.author}**`,
             }
