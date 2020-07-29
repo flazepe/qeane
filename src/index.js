@@ -18,7 +18,7 @@ module.exports = function (client) {
             embed: {
               color: client.functions.randomColor(),
               title: "Now playing:",
-              description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(serverQueue.player.position)}/${time}**\nArtist: **${track.info.author}**`,
+              description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}**\nArtist: **${track.info.author}**`,
             }
 
           })
