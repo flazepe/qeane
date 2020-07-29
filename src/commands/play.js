@@ -123,7 +123,7 @@ async function play(serverQueue, client, player) {
             break;
     }
     if (serverQueue.npmsg) { serverQueue.npmsg.delete() }
-    if (!serverQueue.songs[0]) {
+    if (!serverQueue.songs[0] || serverQueue.voiceChannel.members.size < 2) {
         serverQueue.textChannel.send("Queue has ended, leaving voice channel...")
         player.disconnect()
         client.queue.delete(serverQueue.textChannel.guild.id)
