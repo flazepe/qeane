@@ -4,17 +4,17 @@ const Discord = require('discord.js')
  * @param {Discord.Client} client - The client
  */
 module.exports = function (client) {
-    const fs = require('fs'), config = require('../../config.json'), autoload = require('auto-load'), quick = require('quick.db-plus'), ksoft = require('@ksoft/api')
+  const fs = require('fs'), config = require('../../config.json'), autoload = require('auto-load'), quick = require('quick.db-plus'), ksoft = require('@ksoft/api')
 
-client.queue = new Map()
-client.config = config
-client.snipes = new Discord.Collection()
-client.functions = autoload('./src/functions')
-client.db = new quick.db('qeane')
-client.ksoft = new ksoft.KSoftClient('4b9e205278059be3f1172fd5c46c5a7b6648e038')
-client.commands = new Discord.Collection()
-client.aliases = new Discord.Collection()
-client.version = require('../../package.json').version
+  client.queue = new Map()
+  client.config = config
+  client.snipes = new Discord.Collection()
+  client.functions = autoload('./src/functions')
+  client.db = new quick.db('qeane')
+  client.ksoft = new ksoft.KSoftClient('4b9e205278059be3f1172fd5c46c5a7b6648e038')
+  client.commands = new Discord.Collection()
+  client.aliases = new Discord.Collection()
+  client.version = require('../../package.json')["last-update"]
 
   var commandFiles = fs
     .readdirSync(`./src/commands`)
@@ -24,7 +24,7 @@ client.version = require('../../package.json').version
     client.commands.set(command.name, command);
     if (command.aliases && Array.isArray(command.aliases)) command.aliases.forEach(alias => client.aliases.set(alias, command.name));
     console.log(`==COMMANDS== Command succesfully loaded: ${command.name}`)
-  }  
-  
-console.log('==SETUP== client succesfully loaded!')
+  }
+
+  console.log('==SETUP== client succesfully loaded!')
 }
