@@ -148,13 +148,13 @@ async function play(serverQueue, client, player) {
         serverQueue.npmsginterval = setInterval(() => {
             m.edit({
                 embed: {
-                    color: client.functions.randomColor(),
+                    color: m.embeds[0].color,
                     title: "Now playing:",
                     description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(serverQueue.player.position)}/${time}**\nArtist: **${track.info.author}**`,
                 }
 
             })
-        }, 5000)
+        }, 10000)
     }
     serverQueue.npmsg = m
 }
