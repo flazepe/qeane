@@ -8,7 +8,6 @@ module.exports = function (client) {
 
   client.queue = new Map()
   client.config = config
-  client.snipes = new Discord.Collection()
   client.functions = autoload('./src/functions')
   client.db = new quick.db('qeane')
   client.ksoft = new ksoft.KSoftClient('4b9e205278059be3f1172fd5c46c5a7b6648e038')

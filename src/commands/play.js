@@ -56,7 +56,8 @@ module.exports = {
                 voiceChannel: channel,
                 npmsg: null,
                 player: player,
-                bassboost: 0
+                bassboost: 0,
+                npmsginterval: null
             }
             switch (data.type) {
                 case "PLAYLIST":
@@ -124,7 +125,7 @@ async function play(serverQueue, client, player) {
     }
     if (serverQueue.npmsg) { serverQueue.npmsg.delete() }
     if (!serverQueue.songs[0]) {
-        serverQueue.textChannel.send("Queue has ended, leaving thr voice channel...")
+        serverQueue.textChannel.send("Queue has ended, leaving the voice channel...")
         player.disconnect()
         client.queue.delete(serverQueue.textChannel.guild.id)
         return;
@@ -134,14 +135,26 @@ async function play(serverQueue, client, player) {
     await player.setEqualizer(client.functions.getEq(serverQueue.bassboost))
 
     let time = client.functions.duration(track.info.length)
-    let m = await serverQueue.textChannel.send({
 
+    let m = await serverQueue.textChannel.send({
         embed: {
             color: client.functions.randomColor(),
             title: "Now playing:",
-            description: `Track: **[${track.info.title}](${track.info.uri})**\nDuration: **${track.info.isStream ? "Live stream" : time}**\nArtist: **${track.info.author}**`,
+            description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${track.info.isStream ? "Live stream" : `${client.functions.duration(serverQueue.player.position)}/${time}`}**\nArtist: **${track.info.author}**`,
         }
 
     })
+    if (!track.info.isStream) {
+        serverQueue.npmsginterval = setInterval(() => {
+            m.edit({
+                embed: {
+                    color: client.functions.randomColor(),
+                    title: "Now playing:",
+                    description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(serverQueue.player.position)}/${time}**\nArtist: **${track.info.author}**`,
+                }
+
+            })
+        })
+    }
     serverQueue.npmsg = m
 }
