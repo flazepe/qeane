@@ -14,9 +14,9 @@ module.exports = {
         const node = client.shoukaku.getNode();
         let data;
         if (require('is-a-url')(msg.args.join(' '))) {
-            data = node.rest.resolve(msg.args.join(' '))
+            data = await node.rest.resolve(msg.args.join(' '))
         } else {
-            data = node.rest.resolve(msg.args.join(' '), "youtube")
+            data = await node.rest.resolve(msg.args.join(' '), "youtube")
         }
         if (!data) return msg.reply("Woops, no tracks were found! Please try with the youtube URL!");
         if (client.shoukaku.getPlayer(msg.guild.id)) {
