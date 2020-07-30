@@ -3,14 +3,13 @@ module.exports = {
   aliases: ['botinfo', 'bi'],
   category: "info",
   async execute(client, msg) {
-    return msg.reply("Command not avaible for now, I need to get approved on Discord Bot List (top.gg)!");
     if (!msg.args.join(' ')) return msg.channel.send('Please mention the bot, give bot ID or bot name');
     let member = client.functions.findByID(msg.guild, msg.args.join(' ')) || msg.mentions.members.first()
     if (!member) return msg.reply("Please mention a bot / provide a bot id/username!")
     let user = member.user
     if (!user) return msg.channel.send('Bot not found!');
     if (!user.bot) return msg.channel.send('This user is not a bot! User found: ' + user.tag);
-    dbl.getBot(user.id).then(async bot => {
+    client.dbl.getBot(user.id).then(async bot => {
       let e = {
         color: client.functions.randomColor(),
         description: "DBL info for " + user.tag,
