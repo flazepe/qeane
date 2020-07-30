@@ -1,4 +1,9 @@
 {
-    "ownerID": ["635383782576357407", "599278003406766081"],
-    "prefix": "qeane"
+    "ownerID": [
+        "635383782576357407",
+        "599278003406766081"
+    ],
+    "prefix": "qeane",
+    "token": "insert bot token",
+    "ksoft": "insert ksoft token"
 }
