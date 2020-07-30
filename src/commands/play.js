@@ -122,7 +122,7 @@ async function play(serverQueue, client, player) {
             break;
         case 2:
             let son = serverQueue.songs[0]
-            serverQueue.shift()
+            serverQueue.songs.shift()
             serverQueue.songs = [...serverQueue.songs, son]
             break;
     }
