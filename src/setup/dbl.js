@@ -8,4 +8,6 @@ module.exports = (client) => {
         console.log(vote)
     })
     client.dbl = dbl
+
+    console.log('==SETUP== dbl succesfully loaded!')
 }

@@ -39,6 +39,7 @@ module.exports = function (client) {
     try {
       require('./setup/client')(client)
       require('./setup/sliceEvery')()
+      require('./setup/dbl')(client)
       console.log("Qeane is ready!")
       require('./setup/webhooks')(client)
     } catch (e) {
