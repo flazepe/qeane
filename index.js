@@ -10,13 +10,6 @@ class Qeane extends Client {
         super(opts);
         this.shoukaku = new Shoukaku(this, LavalinkServer, ShoukakuOptions);
     }
-
-    login(token) {
-        this._setupShoukakuEvents();
-        this._setupClientEvents();
-        return super.login(token);
-    }
-
     _setupShoukakuEvents() {
         this.shoukaku.on('ready', (name) => console.log(`Lavalink Node: ${name} is now connected`));
         // You must handle error event
@@ -28,13 +21,17 @@ class Qeane extends Client {
     _setupClientEvents() {
         startBot(this)
     }
-}
+    start() {
+        this._setupShoukakuEvents();
+        this._setupClientEvents();
+    }
 
+}
 new Qeane({
     disableMentions: "everyone",
     token: require('./config.json').token,
     ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES'] },
     enablePermissions: true
 })
-    .login("NzI3MTYzMDk3MDI2MDAzMDA0.Xvn1aA.7kNYBI9di_udF8KOyE7YFXBUe1c")
+    .start()
     .catch(console.error);
