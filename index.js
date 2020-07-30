@@ -34,4 +34,3 @@ new Qeane({
     enablePermissions: true
 })
     .start()
-    .catch(console.error);
