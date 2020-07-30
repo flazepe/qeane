@@ -1,7 +1,7 @@
 module.exports = async (client, msg, cooldown) => {
   if (msg.content === '' || !msg.guild || msg.channel.type === "dm" || msg.author.bot || msg.webhookID) return;
   let prefix = client.db.get("prefix." + msg.guild.id) || client.config.prefix
-  if (msg.content === `<@!${client.user.id}>`) return msg.channel.send(`my prefix is ${prefix}`)
+  if (msg.content === `<@!${client.user.id}>`) return msg.reply(`my prefix is ${prefix}`)
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (cooldown.has(msg.author.id)) {
@@ -19,7 +19,7 @@ module.exports = async (client, msg, cooldown) => {
       if (!msg.member.permissions.has("MANAGE_GUILD")) return;
     }
     if (msg.mentions.members.first()) {
-      return msg.channel.send(`<@!${msg.mentions.members.first().user.id}>`, {
+      return msg.reply(`<@!${msg.mentions.members.first().user.id}>`, {
         embed: {
           description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
           color: 0xe74c3c

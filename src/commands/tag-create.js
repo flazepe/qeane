@@ -13,6 +13,6 @@ module.exports = {
             if (msg.args[0].toLowerCase() === i[1].name || i[1].aliases && i[1].aliases.includes(msg.args[0].toLowerCase())) return msg.reply("Sorry, but you can't create a tag with this name!")
         }
         client.db.set(`tags.${msg.guild.id}.${msg.args[0]}`, content)
-        msg.channel.send('Tag created!')
+        msg.reply('Tag created!')
     }
 }
