@@ -9,7 +9,12 @@ module.exports = {
         await channel.fetch()
         if (!msg.args[0]) return msg.reply("Woops, you have to give me a song name/url!")
         const node = client.shoukaku.getNode();
-        let data = await node.rest.resolve(msg.args.join(' ')) || await node.rest.resolve(msg.args.join(' '), 'youtube');
+        let data;
+        if (require('is-a-url')(msg.args.join(' '))) {
+            data = node.rest.resolve(msg.args.join(' '))
+        } else {
+            data = node.rest.resolve(msg.args.join(' '), "youtube")
+        }
         if (!data) return msg.reply("Woops, no tracks were found! Please try with the youtube URL!");
         if (client.shoukaku.getPlayer(msg.guild.id)) {
             let serverQueue = client.queue.get(msg.guild.id)
