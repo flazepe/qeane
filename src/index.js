@@ -9,23 +9,7 @@ module.exports = function (client) {
   //https://ptb.discordapp.com/api/webhooks/735549440445644915/uxgxWqcryNLb_MLYpDuqWEk6nfZWd8JGAYBac2297p2nSOsLF3S5ThvWGLImv-l8nppT
   client.errorWebhook = errorWebhook
 
-  setInterval(() => {
-    if (client.queue.size > 0) {
-      client.queue.forEach(q => {
-        if (!q.songs[0].info.isStream && q.npmsg) {
-          let track = q.songs[0]
-          q.npmsg.edit({
-            embed: {
-              color: q.npmsg.embeds[0].color,
-              title: "Now playing:",
-              description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}**\nArtist: **${track.info.author}**`,
-            }
-
-          })
-        }
-      })
-    }
-  }, 5000)
+  require('./intervals/npmsgs')(client)
 
   client.on('guildCreate', async guild => {
     if (guild.id === '538361750651797504') return guild.leave()
