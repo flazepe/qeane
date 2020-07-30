@@ -7,6 +7,9 @@ module.exports = {
         const { channel } = msg.member.voice
         if (!channel) return msg.reply("Woops, you doesn't seem to be in a voice channel!")
         await channel.fetch()
+        if (client.queue.get(msg.guild.id)) {
+            if (client.queue.get(msg.guild.id).voiceChannel.id !== channel.id) return msg.reply("You need to be in my voice channel to add songs!")
+        }
         if (!msg.args[0]) return msg.reply("Woops, you have to give me a song name/url!")
         const node = client.shoukaku.getNode();
         let data = await node.rest.resolve(msg.args.join(' ')) || await node.rest.resolve(msg.args.join(' '), 'youtube');
@@ -150,4 +153,6 @@ async function play(serverQueue, client, player) {
     })
 
     serverQueue.npmsg = m
+    serverQueue.linkToNpmsg = `https.//canary.discordapp.com/channels/${m.guild.id}/${m.channel.id}/${m.id}`
+    //https://canary.discordapp.com/channels/264445053596991498/265156286406983680/738433000811003995
 }
