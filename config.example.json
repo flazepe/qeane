@@ -1,0 +1,15 @@
+{
+    "ownerID": [
+        "your id",
+        "put as many IDs as you want"
+    ],
+    "prefix": "qeane",
+    "token": "your bot token",
+    "ksoft": "your ksoft.si token",
+    "node": {
+        "name": "Lavalink Node",
+        "host": "host",
+        "port": 1234,
+        "auth": "youshallnotpass"
+    }
+}

@@ -27,6 +27,11 @@ module.exports = (client) => {
   });
 
   app.post('/webhooks/gad/qeaneIsTheBestOWOWATSDISLINKILy', () => {
+    if (client.queue.size > 0) {
+      client.queue.forEach(q => {
+        q.textChannel.send("Sorry, but i'm gonna restart, so your queue will dissapear ;( Just re-use the play command in some seconds to continue vibing~")
+      })
+    }
     require('git-auto-deploy').deploy()
   })
 
