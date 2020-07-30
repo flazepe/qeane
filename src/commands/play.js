@@ -121,9 +121,9 @@ async function play(serverQueue, client, player) {
             //just repeating the same track over and over again, no need to touch the queue
             break;
         case 2:
-            const song = serverQueue.songs[0]
+            let son = serverQueue.songs[0]
             serverQueue.shift()
-            serverQueue.songs = [...serverQueue.songs, song]
+            serverQueue.songs = [...serverQueue.songs, son]
             break;
     }
     if (serverQueue.npmsg) { serverQueue.npmsg.delete() }
