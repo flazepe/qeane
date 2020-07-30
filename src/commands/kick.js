@@ -10,6 +10,8 @@ module.exports = {
         let reason = msg.args.slice(1).join(' ') || 'No reason provided'
         if (!member) return msg.channel.send('Woops,  user not found!')
         if (member.user.id === client.ownerID) return msg.reply("I can't kick my dev!")
+        if (member.id === msg.guild.id) return msg.reply("Woops, the server owner can not be kicked!")
+        if (!member.kickable) return msg.reply("Woops, I can't kick this member! Please make sure my role is above this member's highest role!")
         member.user.send(`You have been kicked from **${msg.guild.name}** by **${msg.author.tag}**`)
         member.kick({ reason: reason })
         msg.reply("Member succesfully kicked!")

@@ -3,6 +3,7 @@ module.exports = {
     aliases: ['p'],
     category: "music",
     async execute(client, msg) {
+return msg.reply("Sorry, but we got rate limited, music is not avaible for now")
         const { channel } = msg.member.voice
         if (!channel) return msg.reply("Woops, you doesn't seem to be in a voice channel!")
         await channel.fetch()
@@ -56,7 +57,8 @@ module.exports = {
                 voiceChannel: channel,
                 npmsg: null,
                 player: player,
-                bassboost: 0
+                bassboost: 0,
+                npmsginterval: null
             }
             switch (data.type) {
                 case "PLAYLIST":
@@ -123,8 +125,9 @@ async function play(serverQueue, client, player) {
             break;
     }
     if (serverQueue.npmsg) { serverQueue.npmsg.delete() }
-    if (!serverQueue.songs[0] || serverQueue.voiceChannel.members.size < 2) {
-        serverQueue.textChannel.send("Queue has ended or no one is in the voice channel, leaving...")
+    await serverQueue.voiceChannel.fetch()
+    if (!serverQueue.songs[0]) {
+        serverQueue.textChannel.send("Queue has ended, leaving the voice channel...")
         player.disconnect()
         client.queue.delete(serverQueue.textChannel.guild.id)
         return;
@@ -134,14 +137,15 @@ async function play(serverQueue, client, player) {
     await player.setEqualizer(client.functions.getEq(serverQueue.bassboost))
 
     let time = client.functions.duration(track.info.length)
-    let m = await serverQueue.textChannel.send({
 
+    let m = await serverQueue.textChannel.send({
         embed: {
             color: client.functions.randomColor(),
             title: "Now playing:",
-            description: `Track: **[${track.info.title}](${track.info.uri})**\nDuration: **${track.info.isStream ? "Live stream" : time}**\nArtist: **${track.info.author}**`,
+            description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${track.info.isStream ? "Live stream" : `${client.functions.duration(serverQueue.player.position)}/${time}`}**\nArtist: **${track.info.author}**`,
         }
 
     })
+
     serverQueue.npmsg = m
 }

@@ -6,9 +6,8 @@ const Discord = require('discord.js')
 module.exports = function (client) {
   const fs = require('fs'), config = require('../../config.json'), autoload = require('auto-load'), quick = require('quick.db-plus'), ksoft = require('@ksoft/api')
 
-  client.queue = new Map()
+  client.queue = new Discord.Collection()
   client.config = config
-  client.snipes = new Discord.Collection()
   client.functions = autoload('./src/functions')
   client.db = new quick.db('qeane')
   client.ksoft = new ksoft.KSoftClient('4b9e205278059be3f1172fd5c46c5a7b6648e038')
