@@ -2,7 +2,7 @@ const { Client } = require('discord.js-light')
 const { Shoukaku } = require('shoukaku')
 const startBot = require('./src/index')
 
-const LavalinkServer = [{ name: 'node', host: "95.111.235.134", port: 7777, auth: "Zk9MEhPVf0V9iVeLN5Uo5m0cXlQa3j", }];
+const LavalinkServer = [{ name: 'node', host: "localhost", port: 7778, auth: "youwillpass", }];
 const ShoukakuOptions = { moveOnDisconnect: false, resumable: false, resumableTimeout: 30, reconnectTries: 2, restTimeout: 10000 };
 
 class Qeane extends Client {
@@ -26,15 +26,15 @@ class Qeane extends Client {
     }
 
     _setupClientEvents() {
-       startBot(this)
+        startBot(this)
     }
 }
 
 new Qeane({
     disableMentions: "everyone",
     token: require('./config.json').token,
-    ws:{intents:['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']},
+    ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES'] },
     enablePermissions: true
-  })
+})
     .login('NzI3MTYzMDk3MDI2MDAzMDA0.Xvn1aA.7kNYBI9di_udF8KOyE7YFXBUe1c')
     .catch(console.error);
