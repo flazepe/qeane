@@ -2,7 +2,7 @@
   "name": "qeane",
   "description": "No description",
   "version": "1.1.2",
-  "last-update": "7/29/2020 1:52PM CEST",
+  "last-update": "7/20/2020 5:38PM CEST",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -16,6 +16,9 @@
     "axios": "^0.19.2",
     "child_process": "^1.0.2",
     "cpu-stat": "^2.0.1",
+    "dblapi.js": "2.4.0",
+    "timestamp-to-ms": "1.0.0",
+    "radio-browser": "2.1.0",
     "discord.js": "12.2.0",
     "discord.js-light": "^2.8.6",
     "erela.js": "^1.1.8",
