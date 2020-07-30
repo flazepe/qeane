@@ -36,5 +36,5 @@ new Qeane({
     ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES'] },
     enablePermissions: true
 })
-    .login('NzI3MTYzMDk3MDI2MDAzMDA0.Xvn1aA.7kNYBI9di_udF8KOyE7YFXBUe1c')
+    .login(require("./config.json").token)
     .catch(console.error);
