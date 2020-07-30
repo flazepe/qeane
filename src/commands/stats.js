@@ -27,7 +27,6 @@ module.exports = {
     Uptime: **${days}d, ${hours}h, ${minutes}m, ${Math.round(seconds)}s**
     Commands: **${client.commands.size}**
     Guilds: **${client.guilds.cache.size}**
-    Last bot update: **${client.version}**
     Cores: **${require('os').cpus().length}**
     CPU usage: **${await cpuusage}%**
     RAM Usage: **${Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + 'MB'}/${Math.round(require('os').totalmem() / 1000000000) + 'GB'}**
@@ -38,7 +37,7 @@ module.exports = {
       embed: {
         title: "Stats:",
         description: desc,
-        image: { url: `https://top.gg/api/widget/${client.user.id}.jpg` },
+        image: { url: `https://top.gg/api/widget/${client.user.id}.png` },
         color: client.functions.randomColor()
       }
     })
