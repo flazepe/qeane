@@ -38,7 +38,7 @@ module.exports = {
       embed: {
         title: "Stats:",
         description: desc,
-        image: { url: `https://top.gg/api/widget/${client.user.id}.svg` },
+        image: { url: `https://top.gg/api/widget/${client.user.id}.jpg` },
         color: client.functions.randomColor()
       }
     })
