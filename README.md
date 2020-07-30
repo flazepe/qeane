@@ -10,5 +10,5 @@ In order for the bot to fully work, you'll need:<br />
 *a ksoft.si token<br />
 *your user ID
 
-Just put everything in the config.example.json, rename it to config.json and voila! 
+Just put everything in the config.example.json, rename it to config.json and voila!<br />
 If any problem occurs, please contact me. [My server discord](https://discord.gg/nXg4Yh7)
