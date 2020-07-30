@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['p'],
     category: "music",
     async execute(client, msg) {
-return msg.reply("Sorry, but we got rate limited, music is not avaible for now")
+        //return msg.reply("Sorry, but we got rate limited, music is not avaible for now")
         const { channel } = msg.member.voice
         if (!channel) return msg.reply("Woops, you doesn't seem to be in a voice channel!")
         await channel.fetch()
