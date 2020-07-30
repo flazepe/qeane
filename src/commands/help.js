@@ -20,7 +20,7 @@ module.exports = {
         fields.push({ name: "Music", value: music.join(', '), inline: true })
         fields.push({ name: "Moderation", value: moderation.join(', '), inline: true })
         fields.push({ name: "Utility", value: utility.join(', '), inline: true })
-        fields.push({ name: "Links", value: `[Invite](https://discord.com/api/oauth2/authorize?client_id=727163097026003004&permissions=8&scope=bot) | [Support server](https://discord.gg/nXg4Yh7) | [Buy Premium](https://donatebot.io/checkout/674514067368574976?id=f97wr8mz2X)` })
+        fields.push({ name: "Links", value: `[Invite](https://discord.com/api/oauth2/authorize?client_id=727163097026003004&permissions=8&scope=bot) | [Support server](https://discord.gg/nXg4Yh7) | [Buy Premium](https://donatebot.io/checkout/674514067368574976?id=f97wr8mz2X) | [Vote](https://top.gg/bot/727163097026003004/vote)` })
         msg.reply("", {
             embed: {
                 color: client.functions.randomColor(),
