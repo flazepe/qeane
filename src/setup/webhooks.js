@@ -26,10 +26,6 @@ module.exports = (client) => {
     }
   });
 
-  app.post('/webhooks/dbl', function (req, res) {
-    let authToken = "thisIsAToken";
-    console.log(req, res)
-  })
   app.post('/webhooks/gad/qeaneIsTheBestOWOWATSDISLINKILy', () => {
     require('git-auto-deploy').deploy()
   })
