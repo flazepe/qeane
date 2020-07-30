@@ -15,7 +15,7 @@ module.exports = async (client, msg, cooldown) => {
   }
   const commandName = msg.content.slice(prefix.length).trim().split(' ')[0].toLowerCase()
   if (client.db.has(`tags.${msg.guild.id}.${commandName}`)) {
-    if (!msg.member.permissions.has("MANAGE_GUILD")) return;
+    if (!client.config.ownerID.includes(msg.author.id) || !msg.member.permissions.has("MANAGE_GUILD")) return;
     if (msg.mentions.members.first()) {
       return msg.channel.send(`<@!${msg.mentions.members.first().user.id}>`, {
         embed: {
