@@ -7,7 +7,7 @@ module.exports = {
         if (!msg.member.permissions.has("MANAGE_GUILD")) return msg.reply("You need the Manage Server permission in order to do this command!")
         switch (msg.args[0]) {
             case "create":
-                msg.args.slice(1)
+                msg.args = msg.args.slice(1)
                 if (!msg.args[0]) return msg.reply("You need to provide a tag name!")
                 if (!msg.args[1]) return msg.reply("You need to provide a description!")
                 let content = msg.args.slice(1).join(' ')
@@ -19,7 +19,7 @@ module.exports = {
                 msg.reply('Tag created!')
                 break;
             case "delete":
-                msg.args.slice(1)
+                msg.args = msg.args.slice(1)
                 if (!msg.args[0]) return msg.reply("You need to provide a tag name to delete it!!")
                 if (!client.db.has(`tags.${msg.guild.id}.${msg.args[0]}`)) return msg.reply("This tag don't exist!")
                 client.db.delete(`tags.${msg.guild.id}.${msg.args[0]}`)
