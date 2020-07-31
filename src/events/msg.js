@@ -42,7 +42,7 @@ module.exports = async (client, msg, cooldown) => {
     if (!client.config.ownerID.includes(msg.author.id)) return;
   }
   try {
-
+    client.logs.send(`Command ${command.name} executed in ${msg.guild.name} (${msg.guild.id}) by ${msg.author.tag} (${msg.athor.id}).${msg.args.join(' ') ? "\nNo args" : `\nArgs: ${msg.args}`}`)
     await command.execute(client, msg)
   } catch (err) {
     let error = {

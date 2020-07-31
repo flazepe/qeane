@@ -11,5 +11,19 @@
         "host": "host",
         "port": 1234,
         "auth": "youshallnotpass"
+    },
+    "webhooks": {
+        "guild": {
+            "id": "to log",
+            "token": "every server join/leave"
+        },
+        "errors": {
+            "id": "to log",
+            "token": "every errors"
+        },
+        "logs": {
+            "id": "to log",
+            "token": "every executed command"
+        }
     }
 }

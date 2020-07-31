@@ -2,3 +2,4 @@ node_modules
 qeane.sqlite
 config.json
 dbllongdesc.html
+./src/setup/webhooks.js

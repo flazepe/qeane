@@ -2,10 +2,10 @@ module.exports = function (client) {
   const cooldown = new Map(), Discord = require('discord.js-light')
   const msgDelete = require('./events/msgDelete.js')
   const msgEvent = require('./events/msg.js')
-  const guildWebhook = new Discord.WebhookClient("735514604603441243", "ZUYCPoCUoB453RgagMsY3qjgxXByuyUcZdOEIVktwdPgct_cL0GS1ZrIhlHr9d5G_-en")
-  //https://ptb.discordapp.com/api/webhooks/735514604603441243/ZUYCPoCUoB453RgagMsY3qjgxXByuyUcZdOEIVktwdPgct_cL0GS1ZrIhlHr9d5G_-en
-  const errorWebhook = new Discord.WebhookClient("735549440445644915", "uxgxWqcryNLb_MLYpDuqWEk6nfZWd8JGAYBac2297p2nSOsLF3S5ThvWGLImv-l8nppT")
-  //https://ptb.discordapp.com/api/webhooks/735549440445644915/uxgxWqcryNLb_MLYpDuqWEk6nfZWd8JGAYBac2297p2nSOsLF3S5ThvWGLImv-l8nppT
+  client.config = require('../config.json')
+  const guildWebhook = new Discord.WebhookClient(client.config.webhooks.guild.id, client.config.webhooks.guild.token)
+  const errorWebhook = new Discord.WebhookClient(client.config.webhooks.errors.id, client.config.webhooks.errors.token)
+  const logs = new Discord.WebhookClient(client.config.webhooks.logs.id, client.config.webhooks.logs.token)
   client.errorWebhook = errorWebhook
 
   require('./intervals/npmsgs')(client)
@@ -47,6 +47,7 @@ module.exports = function (client) {
       console.log(e)
       client.errorWebhook.send("ERROR: " + e)
     }
+    client.logs.send(`Qeane has started at${new Date(Date.now())}`)
   })
 
   client.on("reconnecting", () => {
