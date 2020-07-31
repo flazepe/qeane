@@ -7,6 +7,7 @@ module.exports = function (client) {
   const errorWebhook = new Discord.WebhookClient(client.config.webhooks.errors.id, client.config.webhooks.errors.token)
   const logs = new Discord.WebhookClient(client.config.webhooks.logs.id, client.config.webhooks.logs.token)
   client.errorWebhook = errorWebhook
+  client.logs = logs
 
   require('./intervals/npmsgs')(client)
 
