@@ -33,6 +33,8 @@ module.exports = {
                         title: "Tag list"
                     }
                 })
+            default:
+                return msg.reply("Usage: `tag <create/delete/list>`")
         }
     }
 }
