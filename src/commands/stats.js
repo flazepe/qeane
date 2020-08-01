@@ -14,7 +14,7 @@ module.exports = {
   name: 'stats',
   category: "info",
   async execute(client, msg) {
-
+    let m = await msg.reply("", { embed: { description: "Collecting stats, please wait..." } })
     let totalSeconds = (client.uptime / 1000);
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor(totalSeconds / 3600);
@@ -33,7 +33,7 @@ module.exports = {
     `
 
 
-    msg.reply("", {
+    m.edit("", {
       embed: {
         title: "Stats:",
         description: desc,

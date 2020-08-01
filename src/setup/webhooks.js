@@ -27,13 +27,8 @@ module.exports = (client) => {
   });
 
   app.post('/webhooks/gad/thisisthetokenfortheghreofefdvdfvefhr4g5r41ds21vg', () => {
-    client.logs.send(`Bot is going to restart, something has been pulled to the github repo`)
-    if (client.queue.size > 0) {
-      client.queue.forEach(q => {
-        q.textChannel.send("Sorry, but i'm gonna restart, so your queue will dissapear ;( Just re-use the play command in some seconds to continue vibing~")
-      })
-    }
-    require('git-auto-deploy').deploy()
+    client.logs.send(`Something has been pulled to the github repo`)
+    require('child_process').exec('git pull origin master')
   })
 
   app.listen(3002, function () {
