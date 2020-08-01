@@ -1,7 +1,8 @@
 module.exports = function (client) {
   const cooldown = new Map(), Discord = require('discord.js-light')
-  const msgDelete = require('./events/msgDelete.js')
-  const msgEvent = require('./events/msg.js')
+  client.events = require('auto-load')('./src/events')
+  client.setup = require('auto-load')('./src/setup')
+  client.intervals = require('auto-load')('./src/intervals')
   client.config = require('../config.json')
   const guildWebhook = new Discord.WebhookClient(client.config.webhooks.guild.id, client.config.webhooks.guild.token)
   const errorWebhook = new Discord.WebhookClient(client.config.webhooks.errors.id, client.config.webhooks.errors.token)
@@ -9,7 +10,7 @@ module.exports = function (client) {
   client.errorWebhook = errorWebhook
   client.logs = logs
 
-  require('./intervals/npmsgs')(client)
+  client.intervals.npmsgs(client)
 
   client.on('guildCreate', async guild => {
     if (guild.id === '538361750651797504') return guild.leave()
@@ -21,7 +22,7 @@ module.exports = function (client) {
   })
 
   client.on('messageDelete', (msg) => {
-    msgDelete(client, msg)
+    client.events.msgDelete(client, msg)
   })
 
   client.on('ready', async () => {
@@ -37,13 +38,13 @@ module.exports = function (client) {
     console.log("=== \\__\\_\\\\___|\\__,_|_| |_|\\___|===")
     console.log("===================================")
     try {
-      require('./setup/client')(client)
-      require('./setup/sliceEvery')()
+      client.setup.client(client)
+      client.setup.sliceEvery()
       if (client.user.id === "727163097026003004") {
-        require('./setup/dbl')(client)
+        client.setup.dbl(client)
+        client.setup.webhooks(client)
       }
       console.log("Qeane is ready!")
-      require('./setup/webhooks')(client)
     } catch (e) {
       console.log(e)
       client.errorWebhook.send("ERROR: " + e)
@@ -61,7 +62,7 @@ module.exports = function (client) {
 
 
   client.on('message', async msg => {
-    msgEvent(client, msg, cooldown)
+    client.events.msg(client, msg, cooldown)
   });
 
 }
