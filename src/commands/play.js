@@ -76,7 +76,7 @@ module.exports = {
                         embed: {
                             color: client.functions.randomColor(),
                             title: "Playlist added",
-                            description: `Title: **${data.playlistName}**`,
+                            description: `Title: **${data.playlistName}**\nSongs: **${data.tracks.length}`,
                         }
 
                     }).then(msg2 => { msg2.delete({ timeout: 15000 }) })
