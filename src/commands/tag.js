@@ -31,7 +31,7 @@ module.exports = {
                 if (!list) return msg.reply("No tag have been created here!")
                 msg.reply("", {
                     embed: {
-                        description: list,
+                        description: list || "No tags",
                         title: "Tag list"
                     }
                 })
