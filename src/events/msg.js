@@ -1,12 +1,19 @@
 module.exports = async (client, msg, cooldown) => {
   if (msg.content === '' || !msg.guild || msg.channel.type === "dm" || msg.author.bot || msg.webhookID) return;
   let prefix = client.db.get("prefix." + msg.guild.id) || client.config.prefix
-  if (msg.content === `<@!${client.user.id}>`) return msg.reply(`my prefix is ${prefix}`)
+  let language = client.db.get(`language.${msg.guild.id}`)
+  if (!language) {
+    client.db.set(`language.${msg.guild.id}`, "english")
+    language="english"
+  }
+  msg.guild.language=language
+  if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(`${language}.msgevent.prefix`)
+  .replace("{0}", prefix))
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (cooldown.has(msg.author.id)) {
     if (Date.now() < cooldown.get(msg.author.id)) {
-      return msg.reply("Woops, you need to wait 3 seconds between each command!")
+      return msg.reply(client.languages.get(`${language}.msgevent.cooldown`))
     }
   }
   let premium = client.db.get(`premium.${msg.author.id}`)
@@ -35,8 +42,7 @@ module.exports = async (client, msg, cooldown) => {
     }
   }
   msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
-  const command = client.commands.get(commandName)
-    || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
+  const command = client.commands.get(commandName) || client.commands.get(client.languages.get(`${language}.aliases.${commandName}`))
   if (!command) return;
   if (command.ownerOnly) {
     if (!client.config.ownerID.includes(msg.author.id)) return;
@@ -48,7 +54,7 @@ module.exports = async (client, msg, cooldown) => {
     let error = {
       embed: {
         color: client.functions.randomColor(),
-        description: `Woopsie doopsie, something went wrong! You can find the error right below. If you can't figure how to get around this issue, please contact my owner`,
+        description: client.languages.get(`${language}.msgevent.error`),
         fields: [{ name: 'Error :', value: `\`\`\`js\n${err}\`\`\`` }]
       }
     }

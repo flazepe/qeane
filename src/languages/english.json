@@ -1,0 +1,21 @@
+{
+    "commands": {
+        "avatar": {
+            "clickToDownload": "Click [here]({0}) to download!"
+        },
+        "language": {
+            "lackOfPermissions": "Only the server admins can change my language!",
+            "noArgs": "Please provide args!",
+            "sucess": "Language changed to **{0}**!"
+        }
+    },
+    "msgevent": {
+        "prefix": "My prefix in this server is {0}, type {0}help to get a command list!",
+        "cooldown": "Woops, you need to wait 3 seconds between each command!",
+        "error": "Woopsie doopsie, something went wrong! You can find the error right below. If you can't figure how to get around this issue, please go to my support server and report this error!"
+    },
+    "aliases": {
+        "pfp": "avatar",
+        "av": "avatar"
+    }
+}

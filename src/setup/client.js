@@ -14,6 +14,7 @@ module.exports = function (client) {
   client.commands = new Discord.Collection()
   client.aliases = new Discord.Collection()
   client.version = require('../../package.json')["last-update"]
+  client.languages = new Discord.Collection()
 
   var commandFiles = fs
     .readdirSync(`./src/commands`)
@@ -23,6 +24,16 @@ module.exports = function (client) {
     client.commands.set(command.name, command);
     if (command.aliases && Array.isArray(command.aliases)) command.aliases.forEach(alias => client.aliases.set(alias, command.name));
     console.log(`==COMMANDS== Command succesfully loaded: ${command.name}`)
+  }
+
+  var languageFiles = fs
+  .readdirSync("./src/languages")
+  .filter(file => file.endsWith('.json'));
+  for (var lang of languageFiles) {
+    var language = require(`../languages/${lang}`);
+    var langName = lang.split('.')[0]
+    client.languages.set(langName,language)
+    console.log(`===LANGUAGES=== Language succesfully loaded: ${lang}`)
   }
 
   console.log('==SETUP== client succesfully loaded!')
