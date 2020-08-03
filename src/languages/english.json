@@ -6,7 +6,7 @@
         "language": {
             "lackOfPermissions": "Only the server admins can change my language!",
             "noArgs": "Please provide args!",
-            "sucess": "Language changed to **{0}**!"
+            "success": "Language changed to **{0}**!"
         }
     },
     "msgevent": {

@@ -6,7 +6,7 @@
         "language": {
             "lackOfPermissions": "Seul les administrateurs peuvent changer ma langue!",
             "noArgs": "Donne moi une langue!",
-            "sucess": "Langue changée en**{0}**!"
+            "success": "Langue changée en**{0}**!"
         }
     },
     "msgevent": {
