@@ -1,4 +1,4 @@
-{
+module.exports = {
     "commands": {
         "avatar": {
             "clickToDownload": "Clique [ici]({0}) pour télécharger!"

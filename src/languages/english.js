@@ -1,4 +1,4 @@
-{
+module.exports = {
     "commands": {
         "avatar": {
             "clickToDownload": "Click [here]({0}) to download!"
