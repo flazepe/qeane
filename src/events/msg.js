@@ -34,10 +34,7 @@ module.exports = async (client, msg, cooldown) => {
         }
       })
       x.edit(`<@!${msg.mentions.members.first().user.id}>`, {
-        embed: {
-          description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
-          color: x.embeds[0].color
-        }
+        embed: x.embeds[0]
       })
     } else {
       return msg.reply("", {
