@@ -27,10 +27,16 @@ module.exports = async (client, msg, cooldown) => {
       if (!msg.member.permissions.has("MANAGE_GUILD")) return;
     }
     if (msg.mentions.members.first()) {
-      return msg.reply(`<@!${msg.mentions.members.first().user.id}>`, {
+      let x = await msg.reply("", {
         embed: {
           description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
           color: 0xe74c3c
+        }
+      })
+      x.edit(`<@!${msg.mentions.members.first().user.id}>`, {
+        embed: {
+          description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
+          color: x.embeds[0].color
         }
       })
     } else {
