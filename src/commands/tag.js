@@ -26,12 +26,12 @@ module.exports = {
                 msg.reply('Tag deleted!')
                 break;
             case "list":
-                let tags = client.db.get(`tags.${msg.guild.id}`)
+                let tags = client.db.get(`tags.${msg.guild.id}`) || {"No tags": "h"}
                 let list = Object.keys(tags).join(', ')
                 if (!list) return msg.reply("No tag have been created here!")
                 msg.reply("", {
                     embed: {
-                        description: list || "No tags",
+                        description: list,
                         title: "Tag list"
                     }
                 })
