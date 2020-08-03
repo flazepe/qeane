@@ -7,13 +7,13 @@ module.exports = async (client, msg, cooldown) => {
     language="english"
   }
   msg.guild.language=language
-  if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(`${language}.msgevent.prefix`)
+  if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(language).msgevent.prefix
   .replace("{0}", prefix))
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (cooldown.has(msg.author.id)) {
     if (Date.now() < cooldown.get(msg.author.id)) {
-      return msg.reply(client.languages.get(`${language}.msgevent.cooldown`))
+      return msg.reply(client.languages.get(language).msgevent.cooldown)
     }
   }
   let premium = client.db.get(`premium.${msg.author.id}`)
@@ -54,7 +54,7 @@ module.exports = async (client, msg, cooldown) => {
     let error = {
       embed: {
         color: client.functions.randomColor(),
-        description: client.languages.get(`${language}.msgevent.error`),
+        description: client.languages.get(language).msgevent.error,
         fields: [{ name: 'Error :', value: `\`\`\`js\n${err}\`\`\`` }]
       }
     }

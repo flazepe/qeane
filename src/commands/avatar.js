@@ -15,7 +15,7 @@ module.exports = {
         image: {
           url: avatar
         },
-        description: client.languages.get(`${msg.guild.language}.commands.avatar.clickToDownload`)
+        description: client.languages.get(msg.guild.language).commands.avatar.clickToDownload
         .replace("{0}",avatar)
       }
     })
