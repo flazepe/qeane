@@ -6,6 +6,7 @@
         "language": {
             "lackOfPermissions": "Only the server admins can change my language!",
             "noArgs": "Please provide args!",
+            "invalidLanguage": "Sorry, but this lang does nto exist or i'm not translated into this language yet!",
             "success": "Language changed to **{0}**!"
         }
     },

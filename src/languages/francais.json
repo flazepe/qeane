@@ -6,6 +6,7 @@
         "language": {
             "lackOfPermissions": "Seul les administrateurs peuvent changer ma langue!",
             "noArgs": "Donne moi une langue!",
+            "invalidLanguage": "Désolé, mais cette langue n'existe pas ou je n'ai pas encore été traduit dans cette langue!",
             "success": "Langue changée en**{0}**!"
         }
     },

@@ -8,6 +8,7 @@ module.exports = async (client, msg, cooldown) => {
   }
   msg.guild.language=language
   if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(language).msgevent.prefix
+  .replace("{0}", prefix)
   .replace("{0}", prefix))
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
@@ -42,7 +43,7 @@ module.exports = async (client, msg, cooldown) => {
     }
   }
   msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
-  const command = client.commands.get(commandName) || client.commands.get(client.languages.get(`${language}.aliases.${commandName}`))
+  const command = client.commands.get(commandName) || eval(`client.commands.get(client.languages.get(language).aliases.${commandName})`)
   if (!command) return;
   if (command.ownerOnly) {
     if (!client.config.ownerID.includes(msg.author.id)) return;
