@@ -3,6 +3,21 @@
         "avatar": {
             "clickToDownload": "Click [here]({0}) to download!"
         },
+        "ban": {
+            "noBanPerm": "Woops, you can't ban members!",
+            "botCantBan": "Woops, I can't ban members!",
+            "noArgs": "Please provide a user to ban! (mention or user id)",
+            "noUser": "Woops, user not found!",
+            "serverOwner": "Woops, the server owner can not be banned!",
+            "notBannable": "Woops, I can't ban this member! Please make sure my role is above this member's highest role!",
+            "youreBanned": "You just got banned from **{0}** by {1}",
+            "noReason": "No reason",
+            "memberBanned": "Member succesfully banned!"
+        },
+        "bassboost": {
+            "invalidNumber": "Please provide a valid number between -8 and 8",
+            "success": "Bass boosted! Please wait a few seconds for the effect to apply"
+        },
         "language": {
             "lackOfPermissions": "Only the server admins can change my language!",
             "noArgs": "Please provide args!",
@@ -18,5 +33,10 @@
     "aliases": {
         "pfp": "avatar",
         "av": "avatar"
+    }, 
+    "music": {
+        "queueEmpty": "Woops, nothing is playing right now!",
+        "noVc": "Woops, you have to be in a voice channel!",
+        "notSameVc": "Woops, you have to be in my voice channel!"
     }
 }

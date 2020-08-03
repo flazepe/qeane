@@ -12,7 +12,6 @@ module.exports = function (client) {
   client.db = new quick.db('qeane')
   client.ksoft = new ksoft.KSoftClient(require('../../config.json').ksoft)
   client.commands = new Discord.Collection()
-  client.aliases = new Discord.Collection()
   client.version = require('../../package.json')["last-update"]
   client.languages = new Discord.Collection()
 
@@ -22,7 +21,6 @@ module.exports = function (client) {
   for (var file of commandFiles) {
     var command = require(`../commands/${file}`);
     client.commands.set(command.name, command);
-    if (command.aliases && Array.isArray(command.aliases)) command.aliases.forEach(alias => client.aliases.set(alias, command.name));
     console.log(`==COMMANDS== Command succesfully loaded: ${command.name}`)
   }
 

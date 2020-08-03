@@ -3,16 +3,18 @@ module.exports = {
     aliases: ['bb'],
     category: "music",
     async execute(client, msg) {
+        const str = client.languages.get(msg.guild.language).commands.bassboost
+        const musicStr=client.languages.get(msg.guild.language).music
         let serverQueue = client.queue.get(msg.guild.id)
-        if (!serverQueue) return msg.reply("Woops, nothing is playing right now!")
-        if (!msg.member.voice.channel) return msg.reply("Woops, you have to be in a voice channel!")
+        if (!serverQueue) return msg.reply(musicStr.queueEmpty)
+        if (!msg.member.voice.channel) return msg.reply(musicStr.noVc)
         let vc = await msg.member.voice.channel.fetch()
-        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply("Woops, you have to be in my voice channel!")
+        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply(musicStr.notSameVc)
         let gain = parseInt(msg.args[0])
-        if (isNaN(gain)) return msg.reply("Please provide a valid number between -8 and 8")
-        if (gain < -8 || gain > 8) return msg.reply("Please provide a number between -8 and 8!");
+        if (isNaN(gain)) return msg.reply(str.invalidNumber)
+        if (gain < -8 || gain > 8) return msg.reply(str.invalidNumber);
         serverQueue.bassboost = gain
         await serverQueue.player.setEqualizer(client.functions.getEq(serverQueue.bassboost));
-        msg.reply("Bass boosted! Please wait a few seconds for the effect to apply")
+        msg.reply(str.success)
     }
 }

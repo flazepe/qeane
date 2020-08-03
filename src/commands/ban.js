@@ -3,19 +3,20 @@ module.exports = {
 	aliases: ['b'],
 	category: "moderation",
 	async execute(client, msg) {
-		if (!msg.member.permissions.has("BAN_MEMBERS")) return msg.reply("Woops, you can't ban members!")
-		if (!msg.guild.me.permissions.has("BAN_MEMBERS")) return msg.reply("Woops, I can't ban members!")
-		if (!msg.args.join(' ')) return msg.reply("Please provide a user to ban! (mention or user id)")
-		const ownerID = client.config.ownerID
+		const str = client.languages.get(msg.guild.language).commands.ban
+		if (!msg.member.permissions.has("BAN_MEMBERS")) return msg.reply(str.noBanPerm)
+		if (!msg.guild.me.permissions.has("BAN_MEMBERS")) return msg.reply(str.botCantBan)
+		if (!msg.args.join(' ')) return msg.reply(str.noArgs)
 		let member = msg.mentions.members.first() || msg.guild.members.cache.get(msg.args.join(' '))
 		if (!member) {
-			return msg.reply("Woops, user not found!");
+			return msg.reply(st.noUser);
 		}
-		if (member.user.id === ownerID) return msg.reply("I can't ban my dev!")
-		if (member.id === msg.guild.id) return msg.reply("Woops, the server owner can not be banned!")
-		if (!member.bannable) return msg.reply("Woops, I can't ban this member! Please make sure my role is above this member's highest role!")
-		member.user.send(`You just got banned from **${msg.guild.name}** by ${msg.author.tag}`)
-		member.ban({ days: 7, reason: msg.args.slice(1).join(' ') || "No reason" })
-		msg.reply("Member succesfully banned!")
+		if (member.id === msg.guild.id) return msg.reply(str.serverOwner)
+		if (!member.bannable) return msg.reply(str.notBannable)
+		member.user.send(str.youreBanned
+		.replace("{0}",msg.guild.name)
+		.replace("{1}", msg.author.tag))
+		member.ban({ days: 7, reason: msg.args.slice(1).join(' ') || str.noReason })
+		msg.reply(str.memberBanned)
 	},
 };

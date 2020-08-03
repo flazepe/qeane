@@ -1,7 +1,6 @@
 
 module.exports = {
   name: 'avatar',
-  aliases: ['pfp', 'av'],
   category: "utility",
   async execute(client, msg) {
     let member;
