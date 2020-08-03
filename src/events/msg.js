@@ -22,11 +22,13 @@ module.exports = async (client, msg, cooldown) => {
     cooldown.set(msg.author.id, Date.now() + 3000)
   }
   const commandName = msg.content.slice(prefix.length).trim().split(' ')[0].toLowerCase()
+  msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
   if (client.db.has(`tags.${msg.guild.id}.${commandName}`)) {
     if (!client.config.ownerID.includes(msg.author.id)) {
       if (!msg.member.permissions.has("MANAGE_GUILD")) return;
     }
     if (msg.mentions.members.first()) {
+      if (msg.args[1] === "-d") msg.delete()
       let x = await msg.reply("", {
         embed: {
           description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
@@ -37,7 +39,8 @@ module.exports = async (client, msg, cooldown) => {
         embed: x.embeds[0]
       })
     } else {
-      return msg.reply("", {
+      if (msg.args[1] === "-d") msg.delete()
+      msg.reply("", {
         embed: {
           description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
           color: 0xe74c3c
@@ -45,7 +48,6 @@ module.exports = async (client, msg, cooldown) => {
       })
     }
   }
-  msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
   const command = client.commands.get(commandName) || eval(`client.commands.get(client.languages.get(language).aliases.${commandName})`)
   if (!command) return;
   if (command.ownerOnly) {
