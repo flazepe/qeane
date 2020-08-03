@@ -28,7 +28,7 @@ module.exports = async (client, msg, cooldown) => {
       if (!msg.member.permissions.has("MANAGE_GUILD")) return;
     }
     if (msg.mentions.members.first()) {
-      if (msg.args.contains("-d")) msg.delete()
+      if (msg.args.includes("-d")) msg.delete()
       let x = await msg.reply("", {
         embed: {
           description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
@@ -39,7 +39,7 @@ module.exports = async (client, msg, cooldown) => {
         embed: x.embeds[0]
       })
     } else {
-      if (msg.args.contains("-d")) msg.delete()
+      if (msg.args.includes("-d")) msg.delete()
       msg.reply("", {
         embed: {
           description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
