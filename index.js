@@ -39,6 +39,7 @@ new Qeane({
     ws: {
         intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_VOICE_STATES']
     },
-    enablePermissions: true
+    enablePermissions: true,
+    shards: 2
 })
     .start()
