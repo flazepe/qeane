@@ -48,6 +48,7 @@ module.exports = async (client, msg, cooldown) => {
       })
     }
   }
+  console.log(str.commandNames)
   const command = client.commands.get(`str.commandNames.${commandName}`) || client.commands.get(`str.aliases.${commandName}`)
   if (!command) return;
   if (command.ownerOnly) {
