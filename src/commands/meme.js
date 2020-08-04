@@ -4,12 +4,12 @@ module.exports = {
   category: "fun",
   async execute(client, msg) {
     const meme = await client.ksoft.images.meme({ nsfw: false });
-    console.log(meme)
     msg.reply("", {
       embed: {
         color: client.functions.randomColor(),
         image: { url: meme.url },
-        description: `[Link to the image](${meme.url})`
+        description: client.languages.get(msg.guild.language).commands.meme.imgurl
+          .replace("{0}", meme.url)
       }
     })
 

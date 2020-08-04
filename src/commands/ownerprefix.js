@@ -3,10 +3,10 @@ module.exports = {
     ownerOnly: true,
     category: "owner",
     async execute(client, msg) {
-
-        if (!msg.args.join(' ')) return msg.reply('Please provide args! To know this server prefix, just mention me!')
+        let str = client.languages.get(msg.guild.id).commands.prefix
+        if (!msg.args.join(' ')) return msg.reply(str.noArgs)
         client.db.set("prefix." + msg.guild.id, msg.args.join(' '))
-        msg.reply('Changed my prefix to **' + msg.args.join(' ') + '**')
-
+        msg.reply(str.success
+            .replace("{0", msg.args.join(' ')))
     }
 }

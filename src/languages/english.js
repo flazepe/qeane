@@ -98,6 +98,24 @@ let obj = {
             "track": "The current track will now repeat!",
             "disable": "Loop disabled!"
         },
+        "meme": {
+            "imgurl": "[Link to the image]({0})" //{0}=image url
+        },
+        "neko": {
+            "heresANeko": "Here's a neko for **{0}**", //{0}=msg.author
+            "grabbedVia": "Neko grabbed via the weebs4life.ga api"
+        },
+        "nlr": {
+            "title": "Now Playing: Next Level Radio",
+            "desc": "Song: {0} \nAuthor: {1} \nPresenter: {2} \n\n > Unique Listeners: {3} \n > Total Listeners: {4}", //this one is self-explanatory i guess
+        },
+        "nowplaying": {
+            //no string on this one, next
+        },
+        "prefix": {
+            "noArgs": "Please provide a new prefix.",
+            "success": "Prefix changed to **{0}** for this server!" //{0}=prefix
+        }
     },
     "msgevent": {
         //used in src/events/msg.js
