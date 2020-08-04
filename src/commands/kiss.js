@@ -7,7 +7,9 @@ module.exports = {
             if (msg.args.join(' ')) {
                 member = msg.mentions.members.first() || client.functions.findByID(msg.guild, msg.args.join(' '))
             } else { member = { user: client.user } }
-            let title = `${msg.author.tag} hugs ${member.user.tag}`
+            let title = client.languages.get(msg.guild.language).commands.kiss.kisses
+                .repace("{0}", msg.author.tag)
+                .replace("{1}", member.user.tag)
             msg.reply("", { embed: { image: { url: res.data.url }, title: title } })
         })
     }

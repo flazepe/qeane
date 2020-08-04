@@ -3,17 +3,19 @@ module.exports = {
     aliases: ['k'],
     category: "moderation",
     async execute(client, msg) {
-        if (!msg.member.permissions.has("KICK_MEMBERS")) return msg.reply("Woops, you can't kick members!")
-        if (!msg.guild.me.permissions.has("KICK_MEMBERS")) return msg.reply("Woops, I can't kick members!")
-        if (!msg.args.join(' ')) return msg.reply("Please provide a user to ban! (mention or user id)")
+        let str = client.languages.get(msg.guild.language).commands.kick
+        if (!msg.member.permissions.has("KICK_MEMBERS")) return msg.reply(str.noKickPerm)
+        if (!msg.guild.me.permissions.has("KICK_MEMBERS")) return msg.reply(str.botcantKick)
+        if (!msg.args.join(' ')) return msg.reply(str.noArgs)
         let member = msg.mentions.members.first() || client.functions.findByID(msg.guild, msg.args.join(' '))
-        let reason = msg.args.slice(1).join(' ') || 'No reason provided'
-        if (!member) return msg.reply('Woops,  user not found!')
-        if (member.user.id === client.ownerID) return msg.reply("I can't kick my dev!")
-        if (member.id === msg.guild.id) return msg.reply("Woops, the server owner can not be kicked!")
-        if (!member.kickable) return msg.reply("Woops, I can't kick this member! Please make sure my role is above this member's highest role!")
-        member.user.send(`You have been kicked from **${msg.guild.name}** by **${msg.author.tag}**`)
+        let reason = msg.args.slice(1).join(' ') || str.noReason
+        if (!member) return msg.reply(str.noUser)
+        if (member.id === msg.guild.id) return msg.reply(str.serverOwner)
+        if (!member.kickable) return msg.reply(str.notKickable)
+        member.user.send(str.youreKicked
+            .replace("{0}}", msg.guild.name)
+            .replace("{1}", msg.author.tag))
         member.kick({ reason: reason })
-        msg.reply("Member succesfully kicked!")
+        msg.reply(str.memberKicked)
     }
 }

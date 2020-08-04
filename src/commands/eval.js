@@ -3,23 +3,23 @@ module.exports = {
   ownerOnly: true,
   category: "owner",
   async execute(client, msg) {
+    let str = client.languages.get(msg.guild.language).commands.eval
     try {
       const code = msg.args.join(" ");
       let evaled = await require('util').inspect(eval(code));
-      evaled.replace(client.token, "woopsie doopsie, toen leaked")
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
-      if (evaled.includes(client.token)) evaled = "token leak detected, FBI OPENS UP"
+      evaled.replace(client.token, str.tokenLeak)
       if (evaled.length > 1024) {
         console.log(evaled)
-        return msg.reply('Text too long! Sending it to js console...')
+        return msg.reply(str.tooLongText)
       } else {
         msg.reply("", {
           embed: {
             color: client.functions.randomColor(),
-            descripion: "Eval succeded!",
+            descripion: str.success,
             fields: [
-              { name: 'Input :', value: `\`\`\`js\n${msg.args.join(' ')}\`\`\`` },
-              { name: 'Output', value: `\`\`\`js\n${evaled}\`\`\`` }
+              { name: str.input, value: `\`\`\`js\n${msg.args.join(' ')}\`\`\`` },
+              { name: str.output, value: `\`\`\`js\n${evaled}\`\`\`` }
             ]
           }
         })
@@ -29,10 +29,10 @@ module.exports = {
       msg.reply("", {
         embed: {
           color: client.functions.randomColor(),
-          descripion: "Eval failed!",
+          descripion: str.failure,
           fields: [
-            { name: 'Input :', value: `\`\`\`js\n${msg.args.join(' ')}\`\`\`` },
-            { name: 'Output', value: `\`\`\`js\n${err}\`\`\`` }
+            { name: str.input, value: `\`\`\`js\n${msg.args.join(' ')}\`\`\`` },
+            { name: str.output, value: `\`\`\`js\n${err}\`\`\`` }
           ]
         }
       })

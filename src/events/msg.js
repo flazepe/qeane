@@ -4,13 +4,13 @@ module.exports = async (client, msg, cooldown) => {
   let language = client.db.get(`language.${msg.guild.id}`)
   if (!language) {
     client.db.set(`language.${msg.guild.id}`, "english")
-    language="english"
+    language = "english"
   }
-  msg.guild.language=language
+  msg.guild.language = language
   console.log(language)
   if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(msg.guild.language).msgevent.prefix
-  .replace("{0}", prefix)
-  .replace("{0}", prefix))
+    .replace("{0}", prefix)
+    .replace("{0}", prefix))
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   if (cooldown.has(msg.author.id)) {
@@ -25,31 +25,11 @@ module.exports = async (client, msg, cooldown) => {
   const commandName = msg.content.slice(prefix.length).trim().split(' ')[0].toLowerCase()
   msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
   if (client.db.has(`tags.${msg.guild.id}.${commandName}`)) {
-    if (!client.config.ownerID.includes(msg.author.id)) {
-      if (!msg.member.permissions.has("MANAGE_GUILD")) return;
-    }
-    if (msg.mentions.members.first()) {
-      if (msg.args.contains("-d")) msg.delete()
-      let x = await msg.reply("", {
-        embed: {
-          description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
-          color: 0xe74c3c
-        }
-      })
-      x.edit(`<@!${msg.mentions.members.first().user.id}>`, {
-        embed: x.embeds[0]
-      })
-    } else {
-      if (msg.args.contains("-d")) msg.delete()
-      msg.reply("", {
-        embed: {
-          description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
-          color: 0xe74c3c
-        }
-      })
-    }
+    require('./tags')(client, msg)
+    return;
   }
-  const command = client.commands.get(commandName) || eval(`client.commands.get(client.languages.get("${msg.guild.language}").aliases.${commandName})`)
+  let str = client.languages.get(language)
+  const command = client.commands.get(`str.commandNames.${commandName}`) || client.commands.get(`str.aliases.${commandName}`)
   if (!command) return;
   if (command.ownerOnly) {
     if (!client.config.ownerID.includes(msg.author.id)) return;
