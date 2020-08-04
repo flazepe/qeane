@@ -25,7 +25,7 @@ module.exports = async (client, msg, cooldown) => {
   const commandName = msg.content.slice(prefix.length).trim().split(' ')[0].toLowerCase()
   msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
   if (client.db.has(`tags.${msg.guild.id}.${commandName}`)) {
-    require('./tags')(client, msg)
+    await require('./tags')(client, msg)
     return;
   }
   let str = client.languages.get(language)

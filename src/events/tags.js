@@ -1,4 +1,4 @@
-module.exports = (client, msg) => {
+module.exports = async (client, msg) => {
     if (!client.config.ownerID.includes(msg.author.id)) {
         if (!msg.member.permissions.has("MANAGE_GUILD")) return;
     }
