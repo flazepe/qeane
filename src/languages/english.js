@@ -63,7 +63,7 @@ let obj = {
             github: "GitHub Repo",
             list: "Qeane's List of Commands",
             datsalist: "Here is a list of my commands",
-            c: "Created my Lumap#0001 | TraWoops, I can't kick this member! Please make sure my role is above this member's highest role!nslated to English by Lumap#0001" //put your discord tag ofc
+            c: "Created my Lumap#0001 | Translated to English by Lumap#0001" //put your discord tag ofc
         },
         hug: {
             hugs: "**{0}**hugs **{1}**" //{0}=message author tag  {1}=mentioned user
@@ -133,7 +133,7 @@ let obj = {
     },
     msgevent: {
         //used in src/events/msg.js
-        prefix: "My prefix in this server is {0}, type {0} help to get a command list!", //{0}=prefix
+        prefix: "My prefix in this server is **{0}**, type ``{0}help`` to get a command list!", //{0}=prefix
         cooldown: "Woops, you need to wait 3 seconds between each command!",
         error: "Woopsie doopsie, something went wrong! You can find the error right below.If you can't figure how to get around this issue, please go to my support server and report this error!"
     },
