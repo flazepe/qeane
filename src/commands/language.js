@@ -6,7 +6,7 @@ module.exports = {
     if (!msg.member.permissions.toArray().includes("ADMINISTRATOR")) return msg.reply(str.commands.language.lackOfPermissions);
     if (!msg.args.join(' ')) return msg.reply(str.commands.language.noArgs
       .replace("{0}", str.commandInvertedNames.language))
-    if (msg.args[0] === " list") {
+    if (msg.args[0] === "list") {
       let langstr = [];
       client.languages.forEach(l => {
         langstr.push(`**${l.name}**`)
