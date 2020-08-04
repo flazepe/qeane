@@ -7,7 +7,6 @@ module.exports = async (client, msg, cooldown) => {
     language = "english"
   }
   msg.guild.language = language
-  console.log(language)
   if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(msg.guild.language).msgevent.prefix
     .replace("{0}", prefix)
     .replace("{0}", prefix))

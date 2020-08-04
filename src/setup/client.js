@@ -26,7 +26,7 @@ module.exports = function (client) {
 
   var languageFiles = fs
     .readdirSync("./src/languages")
-    .filter(file => file.endsWith('.js') && !file.contains("UNFINISHED"));
+    .filter(file => file.endsWith('.js'));
   for (var lang of languageFiles) {
     var language = require(`../languages/${lang}`);
     var langName = lang.split('.')[0]
