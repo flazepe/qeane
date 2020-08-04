@@ -7,6 +7,6 @@ module.exports = {
         if (!msg.args.join(' ')) return msg.reply(str.noArgs)
         client.db.set("prefix." + msg.guild.id, msg.args.join(' '))
         msg.reply(str.success
-            .replace("{0", msg.args.join(' ')))
+            .replace("{0}", msg.args.join(' ')))
     }
 }
