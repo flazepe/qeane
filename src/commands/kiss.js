@@ -5,7 +5,7 @@ module.exports = {
         require('axios').get('https://weebs4life.ga/api/kiss').then(res => {
             let member;
             if (msg.args.join(' ')) {
-                member = msg.mentions.members.first() || client.functions.findByID(msg.guild, msg.args.join(' '))
+                member = msg.mentions.members.first()
             } else { member = { user: client.user } }
             let title = client.languages.get(msg.guild.language).commands.kiss.kisses
                 .repace("{0}", msg.author.tag)

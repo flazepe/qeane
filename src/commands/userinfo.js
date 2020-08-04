@@ -6,7 +6,7 @@ module.exports = {
         let args = msg.args
         let member;
         if (args.join(' ')) {
-            member = msg.mentions.members.first() || client.functions.findByID(msg.guild, msg.args.join(' '))
+            member = msg.mentions.members.first()
         } else {
             member = msg.member
         }

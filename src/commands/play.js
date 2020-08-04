@@ -3,12 +3,13 @@ module.exports = {
     aliases: ['p'],
     category: "music",
     async execute(client, msg) {
-        //return msg.reply("Sorry, but we got rate limited, music is not avaible for now")
+        const str = client.languages.get(msg.guild.language).commands.play
+        const musicStr = client.languages.get(msg.guild.language).music
         const { channel } = msg.member.voice
-        if (!channel) return msg.reply("Woops, you doesn't seem to be in a voice channel!")
+        if (!channel) return msg.reply(musicStr.noVc)
         await channel.fetch()
         if (client.queue.get(msg.guild.id)) {
-            if (client.queue.get(msg.guild.id).voiceChannel.id !== channel.id) return msg.reply("You need to be in my voice channel to add songs!")
+            if (client.queue.get(msg.guild.id).voiceChannel.id !== channel.id) return msg.reply(musicStr.notSameVc)
         }
         if (!msg.args[0]) return msg.reply("Woops, you have to give me a song name/url!")
         const node = client.shoukaku.getNode();

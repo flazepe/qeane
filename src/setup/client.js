@@ -25,12 +25,12 @@ module.exports = function (client) {
   }
 
   var languageFiles = fs
-  .readdirSync("./src/languages")
-  .filter(file => file.endsWith('.js'));
+    .readdirSync("./src/languages")
+    .filter(file => file.endsWith('.js') && !file.contains("UNFINISHED"));
   for (var lang of languageFiles) {
     var language = require(`../languages/${lang}`);
     var langName = lang.split('.')[0]
-    client.languages.set(langName,language)
+    client.languages.set(langName, language)
     console.log(`===LANGUAGES=== Language succesfully loaded: ${lang}`)
   }
 

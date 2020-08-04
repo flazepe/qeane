@@ -2,6 +2,7 @@ module.exports = {
     name: 'ping',
     category: "info",
     async execute(client, msg) {
-        msg.reply(`Pong! **${client.ws.ping}** ms!`)
+        msg.reply(client.languages.get(msg.guild.id).commands.ping
+            .replace("{0}", client.ws.ping))
     },
 }

@@ -7,7 +7,7 @@ module.exports = {
         if (!msg.member.permissions.has("KICK_MEMBERS")) return msg.reply(str.noKickPerm)
         if (!msg.guild.me.permissions.has("KICK_MEMBERS")) return msg.reply(str.botcantKick)
         if (!msg.args.join(' ')) return msg.reply(str.noArgs)
-        let member = msg.mentions.members.first() || client.functions.findByID(msg.guild, msg.args.join(' '))
+        let member = msg.mentions.members.first()
         let reason = msg.args.slice(1).join(' ') || str.noReason
         if (!member) return msg.reply(str.noUser)
         if (member.id === msg.guild.id) return msg.reply(str.serverOwner)
