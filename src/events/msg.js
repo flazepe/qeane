@@ -7,6 +7,7 @@ module.exports = async (client, msg, cooldown) => {
     language = "english"
   }
   msg.guild.language = language
+
   if (msg.content === `<@!${client.user.id}>`) return msg.reply(client.languages.get(msg.guild.language).msgevent.prefix
     .replace("{0}", prefix)
     .replace("{0}", prefix))
@@ -48,7 +49,7 @@ module.exports = async (client, msg, cooldown) => {
       })
     }
   }
-  console.log(str.commandNames)
+  let str = client.languages.get(language)
   const command = client.commands.get(`str.commandNames.${commandName}`) || client.commands.get(`str.aliases.${commandName}`)
   if (!command) return;
   if (command.ownerOnly) {
