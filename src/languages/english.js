@@ -115,7 +115,7 @@ let obj = {
         },
         prefix: {
             noArgs: "Please provide a new prefix.",
-            success: "Prefix changed to **{0}**for this server!" //{0}=prefix
+            success: "Prefix changed to **{0}** for this server!" //{0}=prefix
         },
         pat: {
             pats: "**{0}** pats **{1}**"//{0}=message author tag  {1}=mentioned user
