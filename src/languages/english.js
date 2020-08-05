@@ -173,6 +173,7 @@ let obj = {
         hug: "hug",
         kiss: "kiss",
         language: "language",
+        logs: "logs",
         loop: "loop",
         meme: "meme",
         neko: "neko",

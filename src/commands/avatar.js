@@ -3,11 +3,11 @@ module.exports = {
   name: 'avatar',
   category: "utility",
   async execute(client, msg) {
-    let member;
+    let user;
     if (msg.args.join(' ')) {
-      member = await msg.mentions.members.first()
-    } else { member = msg.member }
-    let avatar = client.functions.avatar(member)
+      user = await msg.mentions.users.first()
+    } else { user = msg.author }
+    let avatar = client.functions.avatar(user)
     msg.reply("", {
       embed: {
         color: client.functions.randomColor(),
