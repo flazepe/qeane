@@ -11,7 +11,7 @@ module.exports = {
         } else {
             commands = client.commands
         }
-        let fields = [], fun = [], owner = [], utility = [], help = [], music = [], moderation = [], info = [], str = []
+        let fields = [], fun = [], owner = [], utility = [], help = [], music = [], moderation = [], info = [], setup = []
         commands.forEach(c => {
             eval(`${c.category}.push("**${eval(`commandNames.${c.name}`)}**")\n${c.category}.sort()`)
         })
