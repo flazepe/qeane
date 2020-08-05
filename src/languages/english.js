@@ -184,7 +184,6 @@ let obj = {
         ping: "ping",
         play: "play",
         prefix: "prefix",
-        premium: "premium",
         purge: "purge",
         queue: "queue",
         reload: "reload",
