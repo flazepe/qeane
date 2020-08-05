@@ -4,7 +4,7 @@ module.exports = {
     category: "help",
     async execute(client, msg) {
         let str = client.languages.get(msg.guild.language).commands.help
-        let commandNames = client.languages.get(msg.guild.language).commandIntervedNames
+        let commandNames = client.languages.get(msg.guild.language).commandInvertedNames
         let commands;
         if (!client.config.ownerID.includes(msg.author.id)) {
             commands = client.commands.filter(c => !c.ownerOnly)
