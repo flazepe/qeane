@@ -9,7 +9,6 @@ module.exports = function (client) {
   const logs = new Discord.WebhookClient(client.config.webhooks.logs.id, client.config.webhooks.logs.token)
   client.errorWebhook = errorWebhook
   client.logs = logs
-
   client.intervals.npmsgs(client)
 
   client.on('guildCreate', async guild => {
@@ -280,5 +279,4 @@ module.exports = function (client) {
       }
     })
   })
-
 }
