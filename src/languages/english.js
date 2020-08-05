@@ -14,6 +14,7 @@ let obj = {
             clickToDownload: "Click[here]({0}) to download this awesome avatar!" //{0}=avatar link
         },
         ban: {
+            usage: "\nUsage: ``ban <member> [reason]``",
             noBanPerm: "Eh! Don't even try to ban if you can't!",
             botCantBan: "Erm, I cannot ban members, please give me the BAN_MEMBERS permissions!",
             noArgs: "I can't ban the air... Please mention the user to ban",
@@ -25,7 +26,7 @@ let obj = {
             memberBanned: "Member succesfully yeeted from this server!"
         },
         bassboost: {
-            invalidNumber: "Please provide a valid number between -8 and 8",
+            invalidNumber: "Please provide a valid number between -8 and 8\nEARRAPE WARNING",
             success: "Bass boosted! Please wait a few seconds for the effect to apply..."
         },
         cat: {
@@ -69,6 +70,7 @@ let obj = {
             hugs: "**{0}**hugs **{1}**" //{0}=message author tag  {1}=mentioned user
         },
         kick: {
+            usage: "\nUsage: ``kick <member> [reason]``",
             noKickPerm: "Don't even try to kick members thanks to me, you can't kick members yourself...",
             botCantKick: "It seems that I can't kick members, please give me the KICK_MEMBERS permission.",
             noArgs: "I can't kick no one, please mention someone to kick...",
@@ -80,12 +82,12 @@ let obj = {
             memberKicked: "Member succesfully kicked out of here!"
         },
         kiss: {
-            kisses: "**{0}** kisses **{1}**"//{0}=message author tag  {1}=mentioned user
+            kisses: "**{0}** kisses **{1}** OwO"//{0}=message author tag  {1}=mentioned user
         },
         language: {
+            usage: "__Usage:__\n-To get the list of my languages: ``language list``\n-To change my language: ``language <LANG>``",
             lackOfPermissions: "Please ask your administrators if you wanna change my language here",
-            noArgs: "Please provide a language! To see a list of my languages, please do ``{0} list``",
-            invalidLanguage: "Sorry, but this lang does nto exist or i'm not translated into this language yet!",
+            invalidLanguage: "Sorry, but this lang does not exist or i'm not translated into this language yet!",
             success: "Language changed to **{0}**!" //{0}=language
         },
         loop: {
@@ -94,17 +96,17 @@ let obj = {
                 track: "track",
                 disable: "disable"
             },
-            usage: "Usage: ``{0} <{1}>``", //{0}=translated command name  {1}=different loop types
-            queue: "The queue will now repeat!",
-            track: "The current track will now repeat!",
+            usage: "\n__Usage:__\n-To loop the queue: ``loop queue``\n-To loop the current track: ``loop track``\n-To disable the loop: ``loop disable``", //
+            queue: "The queue will now repeat! Enjoy your music~!",
+            track: "The current track will now repeat! Enjoy vibing~",
             disable: "Loop disabled!"
         },
         meme: {
-            imgurl: "[Link to the image]({0})" //{0}=image url
+            imgurl: "[Link to dat awesome meme]({0})" //{0}=image url
         },
         neko: {
             heresANeko: "Here's a neko for **{0}**", //{0}=msg.author
-            grabbedVia: "Neko grabbed via the weebs4life.ga api"
+            grabbedVia: "Neko grabbed via the weebs4life.ga api (its sfw)"
         },
         nlr: {
             title: "Now Playing: Next Level Radio",
