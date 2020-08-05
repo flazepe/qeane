@@ -54,7 +54,7 @@ let obj = {
             owner: "Owner",
             music: "Music",
             moderation: "Moderation",
-            setup: "Setu",
+            setup: "SetuP",
             utility: "Utility",
             //links is not a category
             links: "Links",
