@@ -4,11 +4,16 @@ module.exports = (client) => {
             client.queue.forEach(q => {
                 if (!q.songs[0].info.isStream && q.npmsg) {
                     let track = q.songs[0]
+                    let musicStr = client.languages.get(q.textChannel.guild.language).music
                     q.npmsg.edit({
                         embed: {
                             color: q.npmsg.embeds[0].color,
-                            title: "Now playing:",
-                            description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}**\nArtist: **${track.info.author}**`,
+                            title: musicStr.np.title,
+                            description: musicStr.np.desc
+                                .replace("{0}", track.info.title)
+                                .replace("{1}", track.info.uri)
+                                .replace("{2}", track.info.isStream ? musicStr.liveStream : time)
+                                .replace("{3}", track.info.author)
                         }
 
                     })

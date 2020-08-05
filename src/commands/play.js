@@ -11,7 +11,7 @@ module.exports = {
         if (client.queue.get(msg.guild.id)) {
             if (client.queue.get(msg.guild.id).voiceChannel.id !== channel.id) return msg.reply(musicStr.notSameVc)
         }
-        if (!msg.args[0]) return msg.reply("Woops, you have to give me a song name/url!")
+        if (!msg.args[0]) return msg.reply(str.noSong)
         const node = client.shoukaku.getNode();
         let data;
         if (require('is-a-url')(msg.args.join(' '))) {
@@ -19,36 +19,37 @@ module.exports = {
         } else {
             data = await node.rest.resolve(msg.args.join(' '), "youtube")
         }
-        if (!data) return msg.reply("Woops, no tracks were found! Please try with the youtube URL!");
+        if (!data) return msg.reply(str.noSongFound);
         if (client.shoukaku.getPlayer(msg.guild.id)) {
             let serverQueue = client.queue.get(msg.guild.id)
             switch (data.type) {
                 case "PLAYLIST":
                     serverQueue.songs.push(...data.tracks)
                     msg.reply("", {
-
                         embed: {
                             color: client.functions.randomColor(),
-                            title: "Playlist added",
-                            description: `Title: **${data.playlistName}**\nSongs: **${data.tracks.length}`,
+                            title: str.playlist.added,
+                            description: str.playlist.desc
+                                .replace("{0}", data.playlistName)
+                                .replace("{1}", data.tracks.length)
                         }
-
                     }).then(msg2 => { msg2.delete({ timeout: 15000 }) })
                     break;
                 case "SEARCH":
                 case "TRACK":
                     serverQueue.songs.push(data.tracks[0])
                     let track = data.tracks[0]
-
                     time = client.functions.duration(track.info.length)
                     msg.reply("", {
-
                         embed: {
                             color: client.functions.randomColor(),
-                            title: "Track added",
-                            description: `Track: **[${track.info.title}](${track.info.uri})**\nDuration: **${track.info.isStream ? "Live stream" : time}**\nArtist: **${track.info.author}**`,
+                            title: str.track.added,
+                            description: str.track.desc
+                                .replace("{0}", track.info.title)
+                                .replace("{1}", track.info.uri)
+                                .replace("{2}", track.info.isStream ? musicStr.liveStream : time)
+                                .replace("{3}", track.info.author)
                         }
-
                     }).then(msg2 => { msg2.delete({ timeout: 15000 }) })
                     break;
             }
@@ -73,13 +74,13 @@ module.exports = {
                 case "PLAYLIST":
                     serverQueue.songs.push(...data.tracks)
                     msg.reply("", {
-
                         embed: {
                             color: client.functions.randomColor(),
-                            title: "Playlist added",
-                            description: `Title: **${data.playlistName}**\nSongs: **${data.tracks.length}`,
+                            title: str.playlist.added,
+                            description: str.playlist.desc
+                                .replace("{0}", data.playlistName)
+                                .replace("{1}", data.tracks.length)
                         }
-
                     }).then(msg2 => { msg2.delete({ timeout: 15000 }) })
                     break;
                 case "SEARCH":
@@ -88,11 +89,14 @@ module.exports = {
                     let track = data.tracks[0]
                     time = client.functions.duration(track.info.length)
                     msg.reply("", {
-
                         embed: {
                             color: client.functions.randomColor(),
-                            title: "Track added",
-                            description: `Track: **[${track.info.title}](${track.info.uri})**\nDuration: **${track.info.isStream ? "Live stream" : time}**\nArtist: **${track.info.author}**`,
+                            title: str.track.added,
+                            description: str.track.desc
+                                .replace("{0}", track.info.title)
+                                .replace("{1}", track.info.uri)
+                                .replace("{2}", track.info.isStream ? musicStr.liveStream : time)
+                                .replace("{3}", track.info.author)
                         }
 
                     }).then(msg2 => { msg2.delete({ timeout: 15000 }) })
@@ -100,28 +104,29 @@ module.exports = {
             }
             client.queue.set(msg.guild.id, serverQueue)
             player.on('end', () => {
-                play(serverQueue, client, player)
+                play(serverQueue, client, player, str, musicStr)
             });
             player.on('closed', () => {
-                serverQueue.textChannel.send("Woops, it seems that you've disconnected me from a voice channel! Destroying the queue...")
+                serverQueue.textChannel.send(str.player.disconnect)
                 player.disconnect()
                 client.queue.delete(msg.guild.id)
             });
             player.on('error', (e) => {
-                serverQueue.textChannel.send("Woops, something unexcepted happens! " + e)
+                serverQueue.textChannel.send(str.player.console.error
+                    .replace("{0}", e))
                 player.disconnect()
                 client.queue.delete(msg.guild.id)
             });
             player.on('nodeDisconnect', () => {
-                serverQueue.textChannel.send("Woops, I cn not play music because my node was disconnected. Please contact my owner about this!")
+                serverQueue.textChannel.send(str.player.nodeDisconnect)
                 player.disconnect()
                 client.queue.delete(msg.guild.id)
             });
-            play(serverQueue, client, player)
+            play(serverQueue, client, player, str, musicStr)
         }
     }
 }
-async function play(serverQueue, client, player) {
+async function play(serverQueue, client, player, str, musicStr) {
     switch (serverQueue.loopType) {
         case 0:
             serverQueue.songs.shift()
@@ -138,7 +143,7 @@ async function play(serverQueue, client, player) {
     if (serverQueue.npmsg) { serverQueue.npmsg.delete() }
     await serverQueue.voiceChannel.fetch()
     if (!serverQueue.songs[0]) {
-        serverQueue.textChannel.send("Queue has ended, leaving the voice channel...")
+        serverQueue.textChannel.send(str.queueEmpty)
         player.disconnect()
         client.queue.delete(serverQueue.textChannel.guild.id)
         return;
@@ -146,18 +151,19 @@ async function play(serverQueue, client, player) {
     let track = serverQueue.songs[0]
     await player.playTrack(track)
     await player.setEqualizer(client.functions.getEq(serverQueue.bassboost))
-
     let time = client.functions.duration(track.info.length)
-
     let m = await serverQueue.textChannel.send({
         embed: {
             color: client.functions.randomColor(),
-            title: "Now playing:",
-            description: `Track: **[${track.info.title}](${track.info.uri})**\nTime: **${track.info.isStream ? "Live stream" : `${client.functions.duration(serverQueue.player.position)}/${time}`}**\nArtist: **${track.info.author}**`,
+            title: musicStr.np.title,
+            description: musicStr.np.desc
+                .replace("{0}", track.info.title)
+                .replace("{1}", track.info.uri)
+                .replace("{2}", track.info.isStream ? musicStr.liveStream : time)
+                .replace("{3}", track.info.author),
         }
 
     })
-
     serverQueue.npmsg = m
     serverQueue.linkToNpmsg = `https://canary.discordapp.com/channels/${m.guild.id}/${m.channel.id}/${m.id}`
     //https://canary.discordapp.com/channels/264445053596991498/265156286406983680/738433000811003995

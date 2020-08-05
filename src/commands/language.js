@@ -1,6 +1,6 @@
 module.exports = {
   name: 'language',
-  category: "moderation",
+  category: "setup",
   async execute(client, msg) {
     let str = client.languages.get(msg.guild.language).commands.language
     if (!msg.member.permissions.toArray().includes("ADMINISTRATOR")) return msg.reply(str.lackOfPermissions);

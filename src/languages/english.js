@@ -54,6 +54,7 @@ let obj = {
             owner: "Owner",
             music: "Music",
             moderation: "Moderation",
+            setup: "Setu",
             utility: "Utility",
             //links is not a category
             links: "Links",
@@ -115,10 +116,6 @@ let obj = {
         nowplaying: {
             //no string on this one, next
         },
-        prefix: {
-            noArgs: "Please provide a new prefix.",
-            success: "Prefix changed to **{0}** for this server!" //{0}=prefix
-        },
         pat: {
             pats: "**{0}** pats **{1}**"//{0}=message author tag  {1}=mentioned user
         },
@@ -130,13 +127,32 @@ let obj = {
             pong: "Ping? Pong! **{0}**ms!" //{0}=ws pings
         },
         play: {
-            noSong: "I might be dumb, but you didnt gave me any song to play..."
-        }
+            noSong: "I might be dumb, but you didnt gave me any song to play...",
+            noSongFound: "I'm probably blind, but i wasn't able to find that song!",
+            queueEEmpty: "Queue is empty, leaving the voice channel...",
+            playlist: {
+                added: "Playlist added",
+                desc: "Title: **{0}**\nSongs: **{1}**" //no explanation needed i guess
+            },
+            track: {
+                added: "Track added",
+                desc: "Track: **[{0}]({1})**\nDuration: **{2}**\nArtist: **{3}**"
+            },
+            player: {
+                disconnect: "Please do not disconnect me from a voice channel if you can use the stop command. Clearing the queue...",
+                error: "Looks like something went terribly wrong: {0}",
+                nodeDisconnect: "Woops, I cn not play music because my node was disconnected. Please contact my owner so it can fix this error!"
+            }
+        },
+        prefix: {
+            noPerms: "Please ask your administrators if you wanna change my prefix here",
+            noArgs: "Please provide a new prefix.",
+            success: "Prefix changed to **{0}** for this server!" //{0}=prefix
+        },
     },
     msgevent: {
         //used in src/events/msg.js
         prefix: "My prefix in this server is **{0}**, type ``{0}help`` to get a command list!", //{0}=prefix
-        cooldown: "Woops, you need to wait 3 seconds between each command!",
         error: "Woopsie doopsie, something went wrong! You can find the error right below.If you can't figure how to get around this issue, please go to my support server and report this error!"
     },
     aliases: {
@@ -193,7 +209,12 @@ let obj = {
         //these strings are used for several commands, so i put it here so you dont have to translate these strings 1k times
         queueEmpty: "Woops, nothing is playing right now!",
         noVc: "Woops, you have to be in a voice channel!",
-        notSameVc: "Woops, you have to be in my voice channel!"
+        notSameVc: "Woops, you have to be in my voice channel!",
+        live: "Live stream",
+        np: {
+            title: "Now Playing:",
+            desc: "Track: **[{0}]({1})**\nTime: **{2}**\nArtist: **{3}**"
+        }
     }
 }
 obj.commandInvertedNames = swap(obj.commandNames)

@@ -1,5 +1,5 @@
 module.exports = function (client) {
-  const cooldown = new Map(), Discord = require('discord.js-light')
+  const Discord = require('discord.js-light')
   client.events = require('auto-load')('./src/events')
   client.setup = require('auto-load')('./src/setup')
   client.intervals = require('auto-load')('./src/intervals')
@@ -62,7 +62,7 @@ module.exports = function (client) {
 
 
   client.on('message', async msg => {
-    client.events.msg(client, msg, cooldown)
+    client.events.msg(client, msg)
   });
 
 }

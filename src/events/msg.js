@@ -1,4 +1,4 @@
-module.exports = async (client, msg, cooldown) => {
+module.exports = async (client, msg) => {
   if (msg.content === '' || !msg.guild || msg.channel.type === "dm" || msg.author.bot || msg.webhookID) return;
   let prefix = client.db.get("prefix." + msg.guild.id) || client.config.prefix
   let language = client.db.get(`language.${msg.guild.id}`)
@@ -13,15 +13,6 @@ module.exports = async (client, msg, cooldown) => {
     .replace("{0}", prefix))
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
-  if (cooldown.has(msg.author.id)) {
-    if (Date.now() < cooldown.get(msg.author.id)) {
-      return msg.reply(client.languages.get(lmsg.guild.language).msgevent.cooldown)
-    }
-  }
-  let premium = client.db.get(`premium.${msg.author.id}`)
-  if (!premium || !premium.active) {
-    cooldown.set(msg.author.id, Date.now() + 3000)
-  }
   const commandName = msg.content.slice(prefix.length).trim().split(' ')[0].toLowerCase()
   msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
   if (client.db.has(`tags.${msg.guild.id}.${commandName}`)) {
