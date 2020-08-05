@@ -22,23 +22,11 @@ module.exports = async (client, msg) => {
     }
     if (msg.mentions.members.first()) {
       if (msg.args.includes("-d")) msg.delete()
-      let x = await msg.reply("", {
-        embed: {
-          description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
-          color: 0xe74c3c
-        }
-      })
-      x.edit(`<@!${msg.mentions.members.first().user.id}>`, {
-        embed: x.embeds[0]
-      })
+      let x = await msg.reply(client.db.get(`tags.${msg.guild.id}.${commandName}`))
+      x.edit(`<@!${msg.mentions.members.first().user.id}>\n${client.db.get(`tags.${msg.guild.id}.${commandName}`)}`)
     } else {
       if (msg.args.includes("-d")) msg.delete()
-      msg.reply("", {
-        embed: {
-          description: client.db.get(`tags.${msg.guild.id}.${commandName}`),
-          color: 0xe74c3c
-        }
-      })
+      msg.reply(client.db.get(`tags.${msg.guild.id}.${commandName}`))
     }
   }
   let str = client.languages.get(language)
