@@ -9,8 +9,8 @@ module.exports = {
         let vc = await msg.member.voice.channel.fetch()
         if (serverQueue.voiceChannel.id !== vc.id) return msg.reply(str.music.notSameVc)
         let type = msg.args[0]
-        let types = [str.commands.loop.types.queue, str.commands.loop.types.track, str.types.disable]
-        if (!types.includes(type.toLowerCase())) return msg.reply(str.usage)
+        let types = [str.commands.loop.types.queue, str.commands.loop.types.track, str.commands.loop.types.disable]
+        if (!types.includes(type.toLowerCase())) return msg.reply(str.commands.loop.usage)
         switch (msg.args[0]) {
             case str.commands.loop.types.queue:
                 serverQueue.loopType = 2
