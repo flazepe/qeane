@@ -12,6 +12,7 @@ module.exports = async (client, msg) => {
     .replace("{0}", prefix)
     .replace("{0}", prefix))
   if (msg.content.startsWith(`<@!${client.user.id}>`)) prefix = `<@!${client.user.id}>`
+  if (!client.config.ownerID.includes(msg.author.id)) prefix = ""
   if (!msg.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
   const commandName = msg.content.slice(prefix.length).trim().split(' ')[0].toLowerCase()
   msg.args = msg.content.slice(prefix.length).trim().split(' ').slice(1).join(' ').trim().split(' ')
