@@ -3,7 +3,7 @@ module.exports = {
     category: "music",
     async execute(client, msg) {
         let str = client.languages.get(msg.guild.language).commands.loop
-        let musicStr = client.languages.get(msg.guold.language).music
+        let musicStr = client.languages.get(msg.guild.language).music
         let serverQueue = client.queue.get(msg.guild.id)
         if (!serverQueue) return msg.reply(musicStrqueueEmpty)
         if (!msg.member.voice.channel) return msg.reply(musicStr.noVc)
