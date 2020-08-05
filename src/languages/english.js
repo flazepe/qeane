@@ -124,7 +124,7 @@ let obj = {
         },
         pause: {
             alreadyPaused: "Woops, it seems like the current track is already paused!",
-            success: "Succesfully paused the current track! Use the **resume** command to resume it!"
+            success: "Successfully paused the current track! Use the **resume** command to resume it!"
         },
         ping: {
             pong: "Ping? Pong! **{0}**ms!" //{0}=ws pings
