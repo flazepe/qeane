@@ -44,7 +44,7 @@ module.exports = function (client) {
       console.log(e)
       client.errorWebhook.send("ERROR: " + e)
     }
-    client.logs.send(`Qeane has started at${new Date(Date.now())}`)
+    client.logs.send(`Qeane has started at ${new Date(Date.now())}`)
   })
 
   client.on("reconnecting", () => {
