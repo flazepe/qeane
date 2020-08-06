@@ -42,8 +42,9 @@ module.exports = async (client, msg) => {
     }
   }
   let str = client.languages.get(language)
-  const command = client.commands.get(eval(`str.commandNames.${commandName}`)) || client.commands.get(eval(`str.aliases.${commandName}`))
-  if (!command) return;
+  let c = eval(`str.commandNames.${commandName}`) || eval(`str.aliases.${commandName}`)
+  if (!c) return;
+  const command = client.commands.get(c)
   if (command.ownerOnly) {
     if (!client.config.ownerID.includes(msg.author.id)) return;
   }
