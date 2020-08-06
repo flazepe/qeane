@@ -15,7 +15,6 @@ module.exports = (client) => {
                                 .replace("{2}", `${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}`)
                                 .replace("{3}", track.info.author)
                         }
-
                     })
                 }
             })
