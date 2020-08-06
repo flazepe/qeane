@@ -1,5 +1,4 @@
 module.exports = async (client, msg) => {
-  client.msgs.set(msg.id, msg)
   if (msg.content === '' || !msg.guild || msg.channel.type === "dm" || msg.author.bot || msg.webhookID) return;
   let prefix = client.db.get("prefix." + msg.guild.id) || client.config.prefix
   let language = client.db.get(`language.${msg.guild.id}`)
