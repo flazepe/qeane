@@ -13,6 +13,13 @@ module.exports = (client) => {
     setInterval(() => {
         dbl.postStats(client.guilds.cache.size, client.options.shards[0], client.ws.shards.size);
     }, 1800000);
+    dbl.on('posted', () => {
+        console.log('Server count posted!');
+    })
+
+    dbl.on('error', e => {
+        console.log(`Oops! ${e}`);
+    })
 
     client.dbl = dbl
 
