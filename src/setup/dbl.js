@@ -9,7 +9,7 @@ module.exports = (client) => {
         client.db.set(`votes.${vote.user}`, Date.now() + 43200000)
         client.users.fetch(vote.user).then(u => { u.send("Thanks for voting for Qeane!") })
     })
-    dbl.postStats(client.guilds.cache.size, client.options.shards[0hm], client.ws.shards.size);
+    dbl.postStats(client.guilds.cache.size, client.options.shards[0], client.ws.shards.size);
     setInterval(() => {
         dbl.postStats(client.guilds.cache.size, client.options.shards[0], client.ws.shards.size);
     }, 1800000);
