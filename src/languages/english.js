@@ -129,7 +129,7 @@ let obj = {
         play: {
             noSong: "I might be dumb, but you didnt gave me any song to play...",
             noSongFound: "I'm probably blind, but i wasn't able to find that song!",
-            queueEEmpty: "Queue is empty, leaving the voice channel...",
+            queueEmpty: "Queue is empty, leaving the voice channel...",
             playlist: {
                 added: "Playlist added",
                 desc: "Title: **{0}**\nSongs: **{1}**" //no explanation needed i guess
