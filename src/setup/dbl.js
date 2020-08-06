@@ -1,4 +1,4 @@
-module.exports = (client) => {
+module.exports = async (client) => {
     const DBL = require("dblapi.js");
     const dbl = new DBL(require('../../config.json').dbl, { webhookPort: 3001, webhookAuth: 'bestpasswdever' });
     dbl.webhook.on('ready', hook => {
@@ -7,7 +7,8 @@ module.exports = (client) => {
     dbl.webhook.on('vote', vote => {
         client.logs.send(`User with id ${vote.user} just voted!`)
         client.db.set(`votes.${vote.user}`, Date.now() + 43200000)
-        client.users.fetch(vote.user).then(u => { u.send("Thanks for voting for Qeane!") }, client)
+        let user = client.users.cache.get(vote.user) || await client.users.fetch(vote.user)
+        user.send("Thanks you for voting for Qeane :3")
     })
     dbl.postStats(client.guilds.cache.size, client.options.shards[0], client.ws.shards.size);
     setInterval(() => {

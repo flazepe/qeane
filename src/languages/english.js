@@ -177,7 +177,6 @@ let obj = {
         loop: "loop",
         meme: "meme",
         neko: "neko",
-        nlr: "nlr",
         nowplaying: "nowplaying",
         ownerprefix: "ownerprefix",
         pat: "pat",
