@@ -42,7 +42,11 @@ module.exports = async (client, msg) => {
     }
   }
   let str = client.languages.get(language)
-  let c = eval(`str.commandNames.${commandName}`) || eval(`str.aliases.${commandName}`)
+  try {
+    var c = eval(`str.commandNames.${commandName}`) || eval(`str.aliases.${commandName}`)
+  } catch {
+    return;
+  }
   if (!c) return;
   const command = client.commands.get(c)
   if (command.ownerOnly) {
