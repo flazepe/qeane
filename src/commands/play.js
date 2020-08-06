@@ -159,7 +159,7 @@ async function play(serverQueue, client, player, str, musicStr) {
             description: musicStr.np.desc
                 .replace("{0}", track.info.title)
                 .replace("{1}", track.info.uri)
-                .replace("{2}", track.info.isStream ? musicStr.liveStream : `${client.functions.duration(q.player.duration)}/${time}`)
+                .replace("{2}", track.info.isStream ? musicStr.liveStream : `${client.functions.duration(serverQueue.player.duration)}/${time}`)
                 .replace("{3}", track.info.author),
         }
 
