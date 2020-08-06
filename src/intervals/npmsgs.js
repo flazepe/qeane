@@ -12,7 +12,7 @@ module.exports = (client) => {
                             description: musicStr.np.desc
                                 .replace("{0}", track.info.title)
                                 .replace("{1}", track.info.uri)
-                                .replace("{2}", `${client.functions.duration(q.player.duration)}/${client.functions.duration(track.info.length)}`)
+                                .replace("{2}", `${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}`)
                                 .replace("{3}", track.info.author)
                         }
 
