@@ -25,8 +25,8 @@ module.exports = {
                 break;
             case "list":
                 let tags = client.db.get(`tags.${msg.guild.id}`)
+                if (!tags) return msg.reply("No tag have been created here!")
                 let list = Object.keys(tags).join(', ')
-                if (!list) return msg.reply("No tag have been created here!")
                 msg.reply("", {
                     embed: {
                         description: list,
