@@ -3,12 +3,19 @@ module.exports = {
     ownerOnly: true,
     category: "owner",
     async execute(client, msg) {
-        if (!msg.args.join(' ')) return msg.reply("Please provide command name");
-        const command = client.commands.get(msg.args.join(' ')) || client.commands.get(client.aliases.get(msg.args.join(' ')))
-        if (!command) return msg.reply('Invalid command')
+        let str = client.languages.get(msg.guild.language).commands.reload, commandStr = client.languages.get(msg.guild.id)
+        if (!msg.args.join(' ')) return msg.reply(str.noArgs);
+        try {
+            var c = eval(`commandStr.commandNames.${commandName}`) || eval(`commandStr.aliases.${commandName}`)
+        } catch {
+            return;
+        }
+        if (!c) return msg.reply(str.noCommand);
+        const command = client.commands.get(c)
         delete require.cache[require.resolve(`./${command.name}.js`)];
         client.commands.delete(command.name)
         client.commands.set(command.name, require(`./${command.name}.js`))
-        msg.reply('Reloaded command **' + command.name + '** !')
+        msg.reply(str.success
+            .replace("{0}", command.name))
     }
 }

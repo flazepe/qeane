@@ -146,9 +146,39 @@ let obj = {
         },
         prefix: {
             noPerms: "Please ask your administrators if you wanna change my prefix here",
-            noArgs: "Please provide a new prefix.",
+            noArgs: "Please provide a new prefix. Usage: ``prefix <new prefix>``",
             success: "Prefix changed to **{0}** for this server!" //{0}=prefix
         },
+        purge: {
+            noPerms: "Looks like you cannot manage messages here... Please retry when you will be able to",
+            noArgs: "I can't delete nothing. Usage: ``purge <number between 2 and 99>``",
+            invalidAmount: "Invalid amount of messages! Usage: ``purge <number between 2 and 99>``",
+            success: "Success!"
+        },
+        queue: {
+            nothing: "Nothing",
+            desc: "**__Now playing :__** \n[{0}]({1}) ([here]({2}))\n\n**__Incoming :__** \n**{3}**",
+            more: "{0} more songs..."
+        },
+        reload: {
+            noArgs: "Please provide a command to reload",
+            noCommand: "Command no found!",
+            success: "Reloaded command **{0}** succesfully!"
+        },
+        restart: {
+            restarting: "Restartine Qeane..."
+        },
+        resume: {
+            alreadyPlaying: "The current song is still playing!",
+            success: "Succesfully reloaded the song!"
+        },
+        seek: {
+            noArgs: "Usage: ``seek <position (ex: 4m 2s)>``",
+            success: "Succesfully seeked!"
+        },
+        serverinfo: {
+
+        }
     },
     msgevent: {
         //used in src/events/msg.js
@@ -189,7 +219,6 @@ let obj = {
         reload: "reload",
         restart: "restart",
         resume: "resume",
-        say: "say",
         seek: "seek",
         serverinfo: "serverinfo",
         serverlist: "serverlist",

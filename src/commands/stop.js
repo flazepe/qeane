@@ -1,13 +1,15 @@
 module.exports = {
     name: "stop",
     category: "music",
-    async execute (client,msg) {
+    async execute(client, msg) {
+        const str = client.languages.get(msg.guild.language).commands.bassboost
+        const musicStr = client.languages.get(msg.guild.language).music
         let serverQueue = client.queue.get(msg.guild.id)
-        if (!serverQueue) return msg.reply("Woops, nothing is playing right now!")
-        if (!msg.member.voice.channel) return msg.reply("Woops, you have to be in a voice channel!")
+        if (!serverQueue) return msg.reply(musicStr.queueEmpty)
+        if (!msg.member.voice.channel) return msg.reply(musicStr.noVc)
         let vc = await msg.member.voice.channel.fetch()
-        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply("Woops, you have to be in my voice channel!")
-        serverQueue.songs=[]
+        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply(musicStr.notSameVc)
+        serverQueue.songs = []
         serverQueue.player.stopTrack()
     }
 }

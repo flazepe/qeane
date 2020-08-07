@@ -2,17 +2,18 @@ module.exports = {
     name: 'purge',
     category: "moderation",
     async execute(_client, msg) {
-        if (!msg.args.join(' ')) return msg.reply('I can\'t purge nothing!')
+        let str = client.languages.get(msg.guild.language).commands.purge
+        if (!msg.member.permissions.has("MANAGE_MESSAGES")) return msg.reply(str.noPerms)
+        if (!msg.args.join(' ')) return msg.reply(str.noArgs)
 
-        if (!msg.member.permissions.has("MANAGE_msgS")) return msg.reply("Woops, you can't manage msgs!")
         let amount = msg.args[0]
-        if (isNaN(amount)) return msg.reply("You need to tell me a number of msgs I have to purge!")
+        if (isNaN(amount)) return msg.reply(str.invalidAmount)
         amount = Number(amount)
-        if (!amount || amount < 2 || amount > 100) return msg.reply('Invalid number! Please provide a number between 1 and 99')
-        const fetched = await msg.channel.msgs.fetch({
+        if (!amount || amount < 2 || amount > 100) return msg.reply(str.invalidAmount)
+        const fetched = await msg.channel.messages.fetch({
             limit: amount,
         });
         msg.channel.bulkDelete(fetched)
-        msg.reply("msgs succesfully purged!").then(m => m.delete({ timeout: 5000 }))
+        msg.reply(str.success).then(m => m.delete({ timeout: 5000 }))
     },
 }

@@ -2,13 +2,15 @@ module.exports = {
     name: "resume",
     category: "music",
     async execute(client, msg) {
+        const str = client.languages.get(msg.guild.language).commands.resume
+        const musicStr = client.languages.get(msg.guild.language).music
         let serverQueue = client.queue.get(msg.guild.id)
-        if (!serverQueue) return msg.reply("Woops, nothing is playing right now!")
-        if (!msg.member.voice.channel) return msg.reply("Woops, you have to be in a voice channel!")
+        if (!serverQueue) return msg.reply(musicStr.queueEmpty)
+        if (!msg.member.voice.channel) return msg.reply(musicStr.noVc)
         let vc = await msg.member.voice.channel.fetch()
-        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply("Woops, you have to be in my voice channel!")
-        if (!serverQueue.player.paused) return msg.reply("Woops, the current song is already playing!")
+        if (serverQueue.voiceChannel.id !== vc.id) return msg.reply(musicStr.notSameVc)
+        if (!serverQueue.player.paused) return msg.reply(str.alreadyPlaying)
         serverQueue.player.setPaused(false)
-        msg.reply("Resumed the song!")
+        msg.reply(str.success)
     }
 }
