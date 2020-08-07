@@ -15,7 +15,7 @@ module.exports = {
         c = client.commands.get(c)
         delete require.cache[require.resolve(`./${c.name}.js`)];
         client.commands.delete(c.name)
-        client.commands.set(cc.name, require(`./${c.name}.js`))
+        client.commands.set(c.name, require(`./${c.name}.js`))
         msg.reply(str.success
             .replace("{0}", c.name))
     }
