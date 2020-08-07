@@ -6,7 +6,7 @@ module.exports = {
         let str = client.languages.get(msg.guild.language).commands.reload, commandStr = client.languages.get(msg.guild.id)
         if (!msg.args.join(' ')) return msg.reply(str.noArgs);
         try {
-            var c = eval(`commandStr.commandNames.${commandName}`) || eval(`commandStr.aliases.${commandName}`)
+            var c = eval(`commandStr.commandNames.${msg.args[0]}`) || eval(`commandStr.aliases.${msg.args[0]}`)
         } catch {
             return;
         }
