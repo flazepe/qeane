@@ -343,5 +343,5 @@ let obj = {
         }
     }
 }
-obj.commandNames = swap(obj.commandIvertedNames)
+obj.commandNames = swap(obj.commandInvertedNames)
 module.exports = obj
