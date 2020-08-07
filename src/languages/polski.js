@@ -60,7 +60,6 @@ let obj = {
             links: "Linki",
             invite: "Zaproszenie",
             support: "Serwer Wsparcia",
-            premium: "Zdobądź Premium",
             vote: "Zagłosuj na Qeane",
             github: "Repozytorium na GitHub",
             list: "Lista komend Qeane",
@@ -108,10 +107,6 @@ let obj = {
         neko: {
             heresANeko: "Oto neko dla **{0}**", //{0}=msg.author
             grabbedVia: "Neko wzięte z weebs4life.ga api (jest sfw)"
-        },
-        nlr: {
-            title: "Teraz gra: Radio Nowego Poziomu",
-            desc: "Piosenka: {0} \nAutor: {1} \nPrezenter: {2} \n\n > Wyjątkowi Słuchacze: {3} \n > Wszyscy Słuchacze: {4} ", //this one is self-explanatory i guess
         },
         nowplaying: {
             //no string on this one, next
@@ -274,7 +269,7 @@ let obj = {
     },
     msgevent: {
         //used in src/events/msg.js
-        prefix: "Mój prefix na serwerze to **{0}**, wpisz ``{0}help`` aby zdobyć listę komend!", //{0}=prefix
+        prefix: "Mój prefix na serwerze to **{0}**, wpisz ``{0}pomoc`` aby zdobyć listę komend!", //{0}=prefix
         error: "Upsi dupsi, coś poszło nie tak! Możesz znaleźć błąd poniżej. Jeśli nie wiesz jak obejść ten problem pójdź na mój serwer wsparcia i zgłoś problem!"
     },
     aliases: {
@@ -282,7 +277,7 @@ let obj = {
         pfp: "avatar",
         av: "avatar"
     },
-    commandNames: {
+    commandInvertedNames: {
         //"translated name:"original name"
         avatar: "avatar",
         ban: "ban",
@@ -295,7 +290,6 @@ let obj = {
         hug: "przytul",
         kiss: "pocałuj",
         language: "język",
-        logs: "logi",
         loop: "pętla",
         meme: "mem",
         neko: "neko",
@@ -337,5 +331,5 @@ let obj = {
         }
     }
 }
-obj.commandInvertedNames = swap(obj.commandNames)
+obj.commandNames = swap(obj.commandInvertedNames)
 module.exports = obj

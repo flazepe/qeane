@@ -110,10 +110,6 @@ let obj = {
             heresANeko: "Her er en neko! **{0}**", //{0}=msg.author
             grabbedVia: "Neko skaffet fra weebs4life.ga api (det er sfw)"
         },
-        nlr: {
-            title: "Nå spiller: Next Level Radio",
-            desc: "Sang: {0} \nArtist: {1} \nPresenterer: {2} \n\n > Unike Hørere: {3} \n > Totale Hørere: {4} ", //this one is self-explanatory i guess
-        },
         nowplaying: {
             //no string on this one, next
         },
@@ -152,7 +148,7 @@ let obj = {
         },
         purge: {
             noPerms: "Ser ut som at du ikke kan styrre meldinger her.",
-        noArgs: "Slettet ingenting. Bruk: ``purge <tall mellom 2 og 99>``",
+            noArgs: "Slettet ingenting. Bruk: ``purge <tall mellom 2 og 99>``",
             invalidAmount: "Ugyldig antall meldinger. Bruk: ``purge <tall mellom 2 og 99>``",
             success: "Suksess!"
         },
@@ -309,7 +305,6 @@ let obj = {
         klem: "hug",
         kyss: "kiss",
         språk: "language",
-        logs: "logs",
         loop: "loop",
         meme: "meme",
         neko: "neko",

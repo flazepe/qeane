@@ -11,7 +11,7 @@ let obj = {
     commands: {
         //do NOT touch string/command names, just translate the text after the :s
         avatar: {
-            clickToDownload: "Click[here]({0}) to download this awesome avatar!" //{0}=avatar link
+            clickToDownload: "Click [here]({0}) to download this awesome avatar!" //{0}=avatar link
         },
         ban: {
             usage: "\nUsage: ``ban <member> [reason]``",
@@ -44,7 +44,7 @@ let obj = {
             output: "Output: "
         },
         fox: {
-            //this command oes not have any text, next
+            //this command does not have any text, next
         },
         help: {
             //categories names, they are only used in the help command lol
@@ -60,15 +60,14 @@ let obj = {
             links: "Links",
             invite: "Invite",
             support: "Support server",
-            premium: "Get Premium",
             vote: "Vote for Qeane",
             github: "GitHub Repo",
             list: "Qeane's List of Commands",
             datsalist: "Here is a list of my commands",
-            c: "Created my Lumap#0001 | Translated to English by Lumap#0001" //put your discord tag ofc
+            c: "Created by Lumap#0001 | Translated to English by Lumap#0001" //put your discord tag ofc
         },
         hug: {
-            hugs: "**{0}**hugs **{1}**" //{0}=message author tag  {1}=mentioned user
+            hugs: "**{0}** hugs **{1}**" //{0}=message author tag  {1}=mentioned user
         },
         kick: {
             usage: "\nUsage: ``kick <member> [reason]``",
@@ -109,10 +108,6 @@ let obj = {
             heresANeko: "Here's a neko for **{0}**", //{0}=msg.author
             grabbedVia: "Neko grabbed via the weebs4life.ga api (its sfw)"
         },
-        nlr: {
-            title: "Now Playing: Next Level Radio",
-            desc: "Song: {0} \nAuthor: {1} \nPresenter: {2} \n\n > Unique Listeners: {3} \n > Total Listeners: {4} ", //this one is self-explanatory i guess
-        },
         nowplaying: {
             //no string on this one, next
         },
@@ -141,7 +136,7 @@ let obj = {
             player: {
                 disconnect: "Please do not disconnect me from a voice channel if you can use the stop command. Clearing the queue...",
                 error: "Looks like something went terribly wrong: {0}",
-                nodeDisconnect: "Woops, I cn not play music because my node was disconnected. Please contact my owner so it can fix this error!"
+                nodeDisconnect: "Woops, I can not play music because my node was disconnected. Please contact my owner so it can fix this error!"
             }
         },
         prefix: {
@@ -166,7 +161,7 @@ let obj = {
             success: "Reloaded command **{0}** succesfully!"
         },
         restart: {
-            restarting: "Restartine Qeane..."
+            restarting: "Restarting Qeane..."
         },
         resume: {
             alreadyPlaying: "The current song is still playing!",
@@ -221,7 +216,7 @@ let obj = {
                 noTitle: "You need to provide a tag title! (only one word, no spaces allowed)",
                 noDesc: "You need to provide a tag content!",
                 descTooBig: "Sorry, but the tag content needs to be smaller than 2k characters!",
-                success: "Tag succesfulyl created!"
+                success: "Tag succesfully created!"
             },
             delete: {
                 noName: "You need to provide a tag name in order to delete it!",
@@ -275,7 +270,7 @@ let obj = {
     msgevent: {
         //used in src/events/msg.js
         prefix: "My prefix in this server is **{0}**, type ``{0}help`` to get a command list!", //{0}=prefix
-        error: "Woopsie doopsie, something went wrong! You can find the error right below.If you can't figure how to get around this issue, please go to my support server and report this error!"
+        error: "Woopsie doopsie, something went wrong! You can find the error right below. If you can't figure how to get around this issue, please go to my support server and report this error!"
     },
     aliases: {
         //"the alias you want:"the english command name"
@@ -295,8 +290,7 @@ let obj = {
         ui: "userinfo",
         vol: "volume"
     },
-    commandNames: {
-        //"translated name:"original name"
+    commandInvertedNames: {
         avatar: "avatar",
         ban: "ban",
         bassboost: "bassboost",
@@ -308,7 +302,6 @@ let obj = {
         hug: "hug",
         kiss: "kiss",
         language: "language",
-        logs: "logs",
         loop: "loop",
         meme: "meme",
         neko: "neko",
@@ -350,5 +343,5 @@ let obj = {
         }
     }
 }
-obj.commandInvertedNames = swap(obj.commandNames)
+obj.commandNames = swap(obj.commandIvertedNames)
 module.exports = obj

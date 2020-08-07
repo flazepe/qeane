@@ -60,7 +60,6 @@ let obj = {
             links: "Links",
             invite: "Invite",
             support: "Support server",
-            premium: "Hole Premium",
             vote: "Stimme für Qeane",
             github: "GitHub Repo",
             list: "Qeane's Liste an commands",
@@ -108,10 +107,6 @@ let obj = {
         neko: {
             heresANeko: "Hier ist ein neko für **{0}**", //{0}=msg.author
             grabbedVia: "Neko bild geholt von weebs4life.ga api (es ist sfw)"
-        },
-        nlr: {
-            title: "Jetzt am spielen: Next Level Radio",
-            desc: "Lied: {0} \nAuthor: {1} \nPresäntor: {2} \n\n > Zuhörer: {4} ", //this one is self-explanatory i guess
         },
         nowplaying: {
             //no string on this one, next
@@ -295,7 +290,7 @@ let obj = {
         ui: "userinfo",
         vol: "volume"
     },
-    commandNames: {
+    commandInvertedNames: {
         //"translated name:"original name"
         avatar: "avatar",
         ban: "ban",
@@ -308,7 +303,6 @@ let obj = {
         hug: "hug",
         kiss: "kiss",
         language: "language",
-        logs: "logs",
         loop: "loop",
         meme: "meme",
         neko: "neko",
@@ -350,5 +344,5 @@ let obj = {
         }
     }
 }
-obj.commandInvertedNames = swap(obj.commandNames)
+obj.commandNames = swap(obj.commandInvertedNames)
 module.exports = obj

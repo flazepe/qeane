@@ -22,7 +22,7 @@ module.exports = {
         fields.push({ name: str.moderation, value: moderation.join(', '), inline: true })
         fields.push({ name: str.setup, value: setup.join(', '), inline: true })
         fields.push({ name: str.utility, value: utility.join(', '), inline: true })
-        fields.push({ name: str.links, value: `[${str.invite}](https://discord.com/api/oauth2/authorize?client_id=727163097026003004&permissions=8&scope=bot) | [${str.support}](https://discord.gg/nXg4Yh7) | [${str.premium}](https://donatebot.io/checkout/674514067368574976?id=f97wr8mz2X) | [${str.vote}](https://top.gg/bot/727163097026003004/vote) | [${str.github}](https://github.com/lumap/qeane)` })
+        fields.push({ name: str.links, value: `[${str.invite}](https://discord.com/api/oauth2/authorize?client_id=727163097026003004&permissions=8&scope=bot) | [${str.support}](https://discord.gg/nXg4Yh7) | [${str.vote}](https://top.gg/bot/727163097026003004/vote) | [${str.github}](https://github.com/lumap/qeane)` })
         msg.reply("", {
             embed: {
                 color: client.functions.randomColor(),
