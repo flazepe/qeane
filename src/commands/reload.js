@@ -11,7 +11,7 @@ module.exports = {
             return;
         }
         if (!c) return msg.reply(str.noCommand);
-        const command = client.commands.get(c)
+        const command = client.commands.get(c.name)
         delete require.cache[require.resolve(`./${command.name}.js`)];
         client.commands.delete(command.name)
         client.commands.set(command.name, require(`./${command.name}.js`))
