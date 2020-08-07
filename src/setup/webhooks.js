@@ -12,7 +12,7 @@ module.exports = (client) => {
     require('child_process').exec('git pull origin master')
   })
 
-  app.listen(3002, function () {
+  app.listen(4002, function () {
     console.log("Listening on port 3002");
   });
 
