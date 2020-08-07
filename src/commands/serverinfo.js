@@ -25,10 +25,6 @@ module.exports = {
       { name: "Owner", value: owner.nickname ? `${owner.nickname} (${owner.user.tag})` : owner.user.tag, inline: true },
       { name: "Created at", value: guild.createdAt, inline: true },
       { name: "Role count", value: guild.roles.cache.size, inline: true },
-      { name: "Channels", value: `Text: ${channels.text}, Voice: ${channels.voice}, Categories, ${channels.categories}, Unknown: ${channels.unknow}`, inline: true },
-      { name: "Emoji count", value: guild.emojis.cache.size, inline: true },
-      { name: "Emoji list", value: emojilist ? emojilist.length > 1024 ? `Too much emojis to display. Try doing \`\`serverinfo emoji list\`\`` : emojilist : "No emojis", inline: true },
-      { name: "Channel list", value: channellist.length > 1024 ? `Too much channels to display. Try doing \`\`serverinfo channel list\`\`` : channellist, inline: channellist.length > 1024 ? true : false },
       { name: "Role list", value: rolelist.length > 1024 ? `Too much roles to display. Try doing \`\`serverinfo role list\`\`` : rolelist, inline: rolelist.length > 1024 ? true : false }
 
     ]
@@ -40,10 +36,6 @@ module.exports = {
         if (args === f.name.toLowerCase()) {
           if (args === "role list") {
             return msg.reply("", { embed: { title: f.name, description: rolelist.length > 2000 ? "Sorry, but I can't display role list for your server." : rolelist } })
-          } else if (args === "channel list") {
-            return msg.reply("", { embed: { title: f.name, description: channellist.length > 2000 ? "Sorry, but I can't display channel list for your server." : channellist } })
-          } else if (args === "emoji list") {
-            return msg.reply("", { embed: { name: f.name, description: emojilist.length > 2000 ? "Sorry, but I can't display emoji list for your server" : emojilist } })
           } else {
             return msg.reply("", { embed: { title: f.name, description: f.value } })
           }
