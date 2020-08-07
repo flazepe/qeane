@@ -14,7 +14,7 @@ let obj = {
             clickToDownload: "Klikk [her]({0}) for å laste ned avataren!" //{0}=avatar link
         },
         ban: {
-            usage: "\nBruk: ``ban <medlem> [grunn]``",
+            usage: "\nBruk: ``banlys <medlem> [grunn]``",
             noBanPerm: "Du burde virkelig ikke prøve å banlyse noen.",
             botCantBan: "Ok, så jeg kan ikke banlyse folk. Jeg trenger `BAN_MEMBERS` tilgang.",
             noArgs: "Jeg kommer ikke til å banlyse luft. Gi meg et medlem å banlyse istedet.",
@@ -72,7 +72,7 @@ let obj = {
             hugs: "**{0}**klemmer **{1}**" //{0}=message author tag  {1}=mentioned user
         },
         kick: {
-            usage: "\nBruk: ``kick <medlem> [grunn]``",
+            usage: "\nBruk: ``spark <medlem> [grunn]``",
             noKickPerm: "Ikke prøv deg! Jeg lar deg ikke få sparke ut medlemer før du har `KICK_MEMBERS` tilgang.",
             botCantKick: "Hmm... Det virker som at jeg ikke kan sparke ut folk. Jeg trenger `KICK_MEMBERS` tilgang.",
             noArgs: "Ja, jeg skjønner at du vil sparke noen, men hvem!?",
@@ -87,7 +87,7 @@ let obj = {
             kisses: "**{0}** kysser **{1}** OwO"//{0}=message author tag  {1}=mentioned user
         },
         language: {
-            usage: "__Bruk:__\n-For å få en liste over språkene mine, kjør: ``language list``\n-For å bytte språket mitt, kjør: ``language <SPRÅK>``",
+            usage: "__Bruk:__\n-For å få en liste over språkene mine, kjør: ``språk list``\n-For å bytte språket mitt, kjør: ``språk <SPRÅK>``",
             lackOfPermissions: "Vennligst spør administratorene for å bytte språket her.",
             invalidLanguage: "Det språke eksisterer ikke, eller jeg er ikke oversatt til det.",
             success: "Språk byttet til **{0}**!" //{0}=language
@@ -118,7 +118,7 @@ let obj = {
         },
         pause: {
             alreadyPaused: "Oisan! Virker som at sporet er alerede på pause!",
-            success: "Suksessfullt pausa sporet! Bruk **resume** kommandoen for å fortsette.!"
+            success: "Suksessfullt pausa sporet! Bruk **start** kommandoen for å fortsette.!"
         },
         ping: {
             pong: "Ping? Pong! **{0}**ms!" //{0}=ws pings
@@ -271,7 +271,7 @@ let obj = {
     },
     msgevent: {
         //used in src/events/msg.js
-        prefix: "Min prefix i dene serveren er **{0}**, skriv ``{0}help`` for å få en kommando liste!", //{0}=prefix
+        prefix: "Min prefix i dene serveren er **{0}**, skriv ``{0}hjelp`` for å få en kommando liste!", //{0}=prefix
         error: "Oisan! En feil opsto! Den er rett unnenfor her. Vennligst rapporter den til min support server!"
     },
     aliases: {
