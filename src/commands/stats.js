@@ -14,7 +14,8 @@ module.exports = {
   name: 'stats',
   category: "info",
   async execute(client, msg) {
-    let m = await msg.reply("", { embed: { description: "Collecting stats, please wait..." } })
+    let str = client.languages.get(msg.guild.language).commands.stats
+    let m = await msg.reply("", { embed: { description: str.collecting } })
     let totalSeconds = (client.uptime / 1000);
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor(totalSeconds / 3600);
@@ -24,18 +25,17 @@ module.exports = {
     let seconds = totalSeconds % 60;
     let cpuusage = cpuUsage(2000)
     let desc = `
-    Uptime: **${days}d, ${hours}h, ${minutes}m, ${Math.round(seconds)}s**
-    Commands: **${client.commands.size}**
-    Guilds: **${client.guilds.cache.size}**
-    Cores: **${require('os').cpus().length}**
-    CPU usage: **${await cpuusage}%**
-    RAM Usage: **${Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + 'MB'}/${Math.round(require('os').totalmem() / 1000000000) + 'GB'}**
+    ${str.uptime} **${days}d, ${hours}h, ${minutes}m, ${Math.round(seconds)}s**
+    ${str.servers} **${client.guilds.cache.size}**
+    ${str.cores} **${require('os').cpus().length}**
+    ${str.usage} **${await cpuusage}%**
+    ${str.ram} **${Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + 'MB'}/${Math.round(require('os').totalmem() / 1000000000) + 'GB'}**
     `
 
 
     m.edit("", {
       embed: {
-        title: "Stats:",
+        title: str.stats,
         description: desc,
         color: client.functions.randomColor()
       }

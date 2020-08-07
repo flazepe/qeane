@@ -2,7 +2,7 @@ module.exports = {
     name: "shuffle",
     category: "music",
     async execute(client, msg) {
-        const str = client.languages.get(msg.guild.language).commands.bassboost
+        const str = client.languages.get(msg.guild.language).commands.shuffle
         const musicStr = client.languages.get(msg.guild.language).music
         let serverQueue = client.queue.get(msg.guild.id)
         if (!serverQueue) return msg.reply(musicStr.queueEmpty)
@@ -17,6 +17,6 @@ module.exports = {
             return a;
         }
         serverQueue.songs = [serverQueue.songs[0], ...shuffle(serverQueue.songs)]
-        msg.reply('Queue shuffled!')
+        msg.reply(str.success)
     }
 }

@@ -1,6 +1,5 @@
 module.exports = {
     name: "play",
-    aliases: ['p'],
     category: "music",
     async execute(client, msg) {
         const str = client.languages.get(msg.guild.language).commands.play

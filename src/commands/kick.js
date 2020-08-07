@@ -1,6 +1,5 @@
 module.exports = {
     name: 'kick',
-    aliases: ['k'],
     category: "moderation",
     async execute(client, msg) {
         let str = client.languages.get(msg.guild.language).commands.kick

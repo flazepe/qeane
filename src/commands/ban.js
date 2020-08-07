@@ -1,6 +1,5 @@
 module.exports = {
 	name: 'ban',
-	aliases: ['b'],
 	category: "moderation",
 	async execute(client, msg) {
 		const str = client.languages.get(msg.guild.language).commands.ban

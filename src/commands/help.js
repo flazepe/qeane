@@ -1,6 +1,5 @@
 module.exports = {
     name: 'help',
-    aliases: ['h'],
     category: "help",
     async execute(client, msg) {
         let str = client.languages.get(msg.guild.language).commands.help

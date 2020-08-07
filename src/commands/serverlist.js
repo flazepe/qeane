@@ -10,6 +10,6 @@ module.exports = {
 
 
         msg.author.send(string)
-        msg.reply('Server list sent in dm!');
+        msg.reply(client.languages.get(msg.guild.language).commands.serverlist.sent);
     },
 } 

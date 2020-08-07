@@ -2,7 +2,7 @@ module.exports = {
     name: "stop",
     category: "music",
     async execute(client, msg) {
-        const str = client.languages.get(msg.guild.language).commands.bassboost
+        const str = client.languages.get(msg.guild.language).commands.stop
         const musicStr = client.languages.get(msg.guild.language).music
         let serverQueue = client.queue.get(msg.guild.id)
         if (!serverQueue) return msg.reply(musicStr.queueEmpty)

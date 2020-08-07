@@ -1,6 +1,5 @@
 module.exports = {
     name: "nowplaying",
-    aliases: ['np'],
     category: "music",
     async execute(client, msg) {
         let serverQueue = client.queue.get(msg.guild.id)

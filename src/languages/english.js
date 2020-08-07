@@ -177,7 +177,99 @@ let obj = {
             success: "Succesfully seeked!"
         },
         serverinfo: {
-
+            name: "Server Name",
+            id: "Server ID",
+            region: "Server Region",
+            membercount: "Member Count",
+            owner: "Server Owner",
+            createdat: "Created at",
+            info: "Server Info"
+        },
+        serverlist: {
+            sent: "Server list sent in dm!"
+        },
+        shell: {
+            noArgs: "You need to provide a bash command to execute!",
+            tooBig: "The result is too big to be sent via discord! Sending it in the console..."
+        },
+        shuffle: {
+            success: "Queue shuffled!"
+        },
+        skip: {
+            success1: "Music succesfully skipped!",
+            invalidAmount: "The number of songs to skip you provided is invalid!",
+            success2: "Succesfulyl skipped {0} songs!"
+        },
+        slap: {
+            slaps: "**{0}** slaps **{1}**"
+        },
+        stats: {
+            collecting: "Collecting stats, please wait...",
+            stats: "Qeane's stats",
+            uptime: "Uptime:",
+            servers: "Servers:",
+            cores: "CPU Cores:",
+            usage: "CPU Usage",
+            ram: "RAM Usage"
+        },
+        stop: {
+            //no strings, next
+        },
+        tag: {
+            noPerms: "You need the MANAGE_GUILD permission to do this!",
+            create: {
+                noTitle: "You need to provide a tag title! (only one word, no spaces allowed)",
+                noDesc: "You need to provide a tag content!",
+                descTooBig: "Sorry, but the tag content needs to be smaller than 2k characters!",
+                success: "Tag succesfulyl created!"
+            },
+            delete: {
+                noName: "You need to provide a tag name in order to delete it!",
+                invalidTag: "This tag does't exist!",
+                success: "Tag succesfully deleted!"
+            },
+            list: {
+                noTag: "No tag has been created so far in this server!",
+                list: "List of tags in this server:"
+            },
+            usage: "Usage: `tag <create/delete/list>`"
+        },
+        userinfo: {
+            usage: "Usage: ``userinfo [@mention]",
+            tag: "Name/Tag",
+            badges: "Badges",
+            id: "User ID",
+            nick: "Nickname",
+            noNick: "No nickname",
+            bot: "Bot?",
+            yes: "Yes",
+            no: "No",
+            joined: "Joined at",
+            boost: "Boosting?",
+            boostSince: "Boosting since",
+            notBoosting: "Not boosting",
+            perms: "Permissions",
+            roles: "Role list",
+            noRoles: "No roles",
+            tooMuchRoles: "Too much roles to display here! Try doing ``userinfo @user role list``!",
+            tooMuchRoles2: "This user has too many roles to display",
+            info: "User Info"
+        },
+        volume: {
+            current: "Current volume: **{0}**",
+            noArgs: "You need to provide a new volume",
+            invalid: "You need to provide a new volume between 1 and 250!",
+            success: "Volume set to **{0}**!"
+        },
+        weather: {
+            usage: "Usage: ``weather <C/F> <city name>``",
+            for: "Weather for **{0}**",
+            timezone: "Timezone",
+            type: "Degree type",
+            temp: "Temperature",
+            feels: "Feels like",
+            wind: "Winds",
+            hum: "Humidity"
         }
     },
     msgevent: {
@@ -188,7 +280,20 @@ let obj = {
     aliases: {
         //"the alias you want:"the english command name"
         pfp: "avatar",
-        av: "avatar"
+        av: "avatar",
+        b: "ban",
+        bb: "bassboost",
+        h: "help",
+        k: "kick",
+        lang: "language",
+        np: "nowplaying",
+        p: "play",
+        q: "queue",
+        si: "serverinfo",
+        terminal: "shell",
+        exec: "shell",
+        ui: "userinfo",
+        vol: "volume"
     },
     commandNames: {
         //"translated name:"original name"
@@ -236,7 +341,7 @@ let obj = {
     music: {
         //these strings are used for several commands, so i put it here so you dont have to translate these strings 1k times
         queueEmpty: "Woops, nothing is playing right now!",
-        noVc: "Woops, you have to be in a voice channel!",
+        noVc: "Mate, go in a channel before running this.",
         notSameVc: "Woops, you have to be in my voice channel!",
         live: "Live stream",
         np: {
