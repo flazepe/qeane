@@ -301,6 +301,7 @@ let obj = {
         help: "help",
         hug: "hug",
         kiss: "kiss",
+        kick: "kick",
         language: "language",
         loop: "loop",
         meme: "meme",

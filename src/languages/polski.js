@@ -289,6 +289,7 @@ let obj = {
         help: "pomoc",
         hug: "przytul",
         kiss: "pocałuj",
+        kick: "wyrzuć",
         language: "język",
         loop: "pętla",
         meme: "mem",

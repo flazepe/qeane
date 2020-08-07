@@ -301,6 +301,7 @@ let obj = {
         help: "aide",
         hug: "calin",
         kiss: "bisou",
+        kick: "exclure",
         language: "langue",
         loop: "répéter",
         meme: "meme",

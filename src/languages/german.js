@@ -7,7 +7,7 @@ function swap(json) {
     return ret;
 }
 let obj = {
-    name: "english",
+    name: "german",
     commands: {
         //do NOT touch string/command names, just translate the text after the :s
         avatar: {
@@ -302,6 +302,7 @@ let obj = {
         help: "help",
         hug: "hug",
         kiss: "kiss",
+        kick: "kick",
         language: "language",
         loop: "loop",
         meme: "meme",
