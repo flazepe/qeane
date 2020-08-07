@@ -4,7 +4,7 @@ module.exports = async (client) => {
     dbl.webhook.on('ready', hook => {
         console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
     });
-    dbl.webhook.on('vote', vote => {
+    dbl.webhook.on('vote', async vote => {
         client.logs.send(`User with id ${vote.user} just voted!`)
         client.db.set(`votes.${vote.user}`, Date.now() + 43200000)
         let user = client.users.cache.get(vote.user) || await client.users.fetch(vote.user)
