@@ -13,7 +13,6 @@ module.exports = {
                 {name: "Song Text", value: `${res.now_playing.song.text}`, inline: true},
                 {name: "Artist", value: `${res.now_playing.song.artist}`, inline: true}
               ]
-              client.db.set(`photo_${message.guild.id}`, res.now_playing.song.image)
               const embed = new MessageEmbed()
               .setTitle(`BeatsFM | Presenter: ${res.live.streamer_name || 'Auto DJ'}`)
               .addFields(fields)
