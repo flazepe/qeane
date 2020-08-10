@@ -10,6 +10,7 @@ module.exports = function (client) {
   client.errorWebhook = errorWebhook
   client.logs = logs
   client.intervals.npmsgs(client)
+  client.intervals.reminders(client)
 
   client.on('guildCreate', async guild => {
     if (guild.id === '538361750651797504') return guild.leave()
