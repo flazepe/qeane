@@ -2,7 +2,7 @@ module.exports = {
   name: 'weather',
   category: "utility",
   async execute(client, msg) {
-    let str = client.languages.get(msg.guild.id).commands.weather
+    let str = client.languages.get(msg.guild.lnaguage).commands.weather
     const Discord = require('discord.js')
 
     if (!msg.args.join(' ') || !msg.args[1]) return msg.reply(str.usage)
