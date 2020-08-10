@@ -3,7 +3,7 @@ module.exports = {
     ownerOnly: true,
     category: "owner",
     async execute(client, msg) {
-        let str = client.languages.get(msg.guild.language).commands.reload, commandStr = client.languages.get(msg.guild.id)
+        let str = client.languages.get(msg.guild.language).commands.reload, commandStr = client.languages.get(msg.guild.language)
         if (!msg.args.join(' ')) return msg.reply(str.noArgs);
         let c;
         try {
