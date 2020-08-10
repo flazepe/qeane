@@ -1,6 +1,6 @@
 module.exports = async (client) => {
     setInterval(() => {
-        client.db.get('reminders').forEach(r => {
+        client.db.get('reminders').forEach(async r => {
             r = r[0]
             if (!r) return;
             if (r.timelimit < Date.now()) {
