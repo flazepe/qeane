@@ -6,7 +6,8 @@ module.exports = async (client) => {
             if (r.timelimit < Date.now()) {
                 let channel = client.channels.cache.get(r.channel.id) || await client.channels.fetch(r.channel.id)
                 channel.send(`<@!${r.user.id}>, you wanted me to remind you: ${r.text}`)
-                delete client.db.get('reminders')[r]
+                let db = client.db.get('reminders')
+                delete db[r]
             }
         })
     }, 5000)
