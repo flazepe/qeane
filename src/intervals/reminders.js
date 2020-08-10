@@ -10,5 +10,5 @@ module.exports = async (client) => {
                 delete db[r]
             }
         })
-    }, 5000)
+    }, 2000)
 }
