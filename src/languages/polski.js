@@ -304,6 +304,7 @@ let obj = {
         purge: "wyczyść",
         queue: "lista",
         reload: "przeładuj",
+        reminder: "reminder",
         restart: "restartuj",
         resume: "wznów",
         seek: "przeszukuj",

@@ -316,6 +316,7 @@ let obj = {
         purge: "purge",
         queue: "queue",
         reload: "recharger",
+        reminder: "reminder",
         restart: "redémarrer",
         resume: "reprendre",
         seek: "avancer",
