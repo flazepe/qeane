@@ -36,7 +36,7 @@ module.exports = function (client) {
     try {
       client.setup.client(client)
       client.setup.sliceEvery()
-      if (client.user.id === "727163097026003004") {
+      if (client.user.id === "742670668646055967") {
         client.setup.dbl(client)
         client.setup.webhooks(client)
       }
