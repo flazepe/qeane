@@ -7,6 +7,7 @@ module.exports = {
     try {
       const code = msg.args.join(" ");
       let evaled = require('util').inspect(eval(code));
+      if (evaled instanceof Promise) evaled = await evaled;
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
       evaled.replace(client.token, str.tokenLeak)
       if (evaled.length > 1024) {
