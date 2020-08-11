@@ -9,8 +9,8 @@ module.exports = function (client) {
   const logs = new Discord.WebhookClient(client.config.webhooks.logs.id, client.config.webhooks.logs.token)
   client.errorWebhook = errorWebhook
   client.logs = logs
+  client.queue = new Map()
   client.intervals.npmsgs(client)
-  client.intervals.reminders(client)
 
   client.on('guildCreate', async guild => {
     if (guild.id === '538361750651797504') return guild.leave()
