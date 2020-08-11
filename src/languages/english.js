@@ -10,13 +10,13 @@ let obj = {
     name: "english",
     commands: {
         //do NOT touch string/command names, just translate the text after the :s
-        // dual: {
-        //     artist: "Artist",
-        //     song: "Song",
-        //     presenter: "Presenter",
-        //     listenerpeak: "Listener Peak",
-        //     listeners: "Listeners"
-        // },
+        dual: {
+            artist: "Artist",
+            song: "Song",
+            presenter: "Presenter",
+            listenerpeak: "Listener Peak",
+            listeners: "Listeners"
+        },
         avatar: {
             clickToDownload: "Click [here]({0}) to download this awesome avatar!" //{0}=avatar link
         },
@@ -303,7 +303,7 @@ let obj = {
         bassboost: "bassboost",
         cat: "cat",
         dog: "dog",
-       // dualfm: "dualfm",
+        dualfm: "dualfm",
         eval: "eval",
         fox: "fox",
         help: "help",

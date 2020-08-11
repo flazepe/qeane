@@ -23,7 +23,7 @@ module.exports = {
                 .addFields(fields)
                 .setColor('#cf6fcb')
 
-            msg.channel.send(embed)
+            msg.reply("", embed)
 
         });
     }
