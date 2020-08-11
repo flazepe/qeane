@@ -1,4 +1,4 @@
-module.zxports = (inTotal, Total) => {
+module.exports = (inTotal, Total) => {
     options = {
         elapsedChar: "-",
         progressChar: "+",
