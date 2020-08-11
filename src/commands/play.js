@@ -151,8 +151,6 @@ async function play(serverQueue, client, player, str, musicStr) {
     await player.playTrack(track)
     await player.setEqualizer(client.functions.getEq(serverQueue.bassboost))
     let time = client.functions.duration(track.info.length)
-    console.log(serverQueue.player.position)
-    console.log(track.info.length)
     let m = await serverQueue.textChannel.send({
         embed: {
             color: client.functions.randomColor(),
