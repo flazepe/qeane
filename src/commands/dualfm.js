@@ -14,7 +14,7 @@ module.exports = {
         fetch("https://api.dualfm.net/stats").then(res => res.json()).then(res => {
             let fields = [
                 { name: 'Song', value: `${res.now.song}`, inline: true },
-                { name: 'Artisit', value: `${res.now.artist}`, inline: true },
+                { name: 'Artist', value: `${res.now.artist}`, inline: true },
                 { name: 'Presenter', value: `${res.presenter.username}`, inline: true },
                 { name: 'Listeners', value: `${res.listeners.current}`, inline: true }
             ]
