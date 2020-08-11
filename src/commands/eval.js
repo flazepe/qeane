@@ -10,33 +10,15 @@ module.exports = {
       if (evaled instanceof Promise) evaled = await evaled;
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
       evaled.replace(client.token, str.tokenLeak)
-      if (evaled.length > 1024) {
+      if (evaled.length > 2000) {
         console.log(evaled)
         return msg.reply(str.tooLongText)
       } else {
-        msg.reply("", {
-          embed: {
-            color: client.functions.randomColor(),
-            descripion: str.success,
-            fields: [
-              { name: str.input, value: `\`\`\`js\n${msg.args.join(' ')}\`\`\`` },
-              { name: str.output, value: `\`\`\`js\n${evaled}\`\`\`` }
-            ]
-          }
-        })
+        msg.reply(evaled, { code: "js" })
       };
     } catch (err) {
       console.log(err)
-      msg.reply("", {
-        embed: {
-          color: client.functions.randomColor(),
-          descripion: str.failure,
-          fields: [
-            { name: str.input, value: `\`\`\`js\n${msg.args.join(' ')}\`\`\`` },
-            { name: str.output, value: `\`\`\`js\n${err}\`\`\`` }
-          ]
-        }
-      })
+      msg.reply(e)
     };
 
   },
