@@ -6,7 +6,7 @@ module.exports = {
     let str = client.languages.get(msg.guild.language).commands.eval
     try {
       const code = msg.args.join(" ");
-      let evaled = await require('util').inspect(eval(`(async () => {${code}})();`));
+      let evaled = await require('util').inspect(eval(code));
       if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
       evaled.replace(client.token, str.tokenLeak)
       if (evaled.length > 1024) {
