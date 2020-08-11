@@ -18,7 +18,7 @@ module.exports = {
       };
     } catch (err) {
       console.log(err)
-      msg.reply(e)
+      msg.reply(err)
     };
 
   },
