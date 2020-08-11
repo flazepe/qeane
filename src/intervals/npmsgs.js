@@ -12,7 +12,7 @@ module.exports = (client) => {
                             description: musicStr.np.desc
                                 .replace("{0}", track.info.title)
                                 .replace("{1}", track.info.uri)
-                                .replace("{2}", `${client.functions.duration(q.player.position)}/${client.functions.duration(track.info.length)}`)
+                                .replace("{2}", `${client.toolkit.createProgressBar(serverQueue.player.position, track.info.length, { elapsedChar: "-", progressChar: "+", emptyChar: "." })}\n${client.functions.duration(q.player.position)}/${time}`)
                                 .replace("{3}", track.info.author)
                         }
                     })

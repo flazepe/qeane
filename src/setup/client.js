@@ -4,7 +4,7 @@ const Discord = require('discord.js')
  * @param {Discord.Client} client - The client
  */
 module.exports = function (client) {
-  const fs = require('fs'), config = require('../../config.json'), autoload = require('auto-load'), quick = require('quick.db-plus'), ksoft = require('@ksoft/api')
+  const fs = require('fs'), config = require('../../config.json'), autoload = require('auto-load'), quick = require('quick.db-plus'), ksoft = require('@ksoft/api'), str_toolkit = require('string-toolkit')
 
   client.queue = new Discord.Collection()
   client.config = config
@@ -14,7 +14,7 @@ module.exports = function (client) {
   client.commands = new Discord.Collection()
   client.version = require('../../package.json')["last-update"]
   client.languages = new Discord.Collection()
-
+  client.toolkit = new str_toolkit()
   var commandFiles = fs
     .readdirSync(`./src/commands`)
     .filter(file => file.endsWith('.js'));
