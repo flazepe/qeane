@@ -2,7 +2,7 @@ module.exports = (inTotal, Total) => {
     options = {
         elapsedChar: "-",
         progressChar: "+",
-        emptyChar: "."
+        emptyChar: "-"
     };
 
     let progressBar = "", fillLine;
