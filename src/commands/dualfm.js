@@ -6,17 +6,17 @@ module.exports = {
     category: "music",
     async execute(client, msg) {
 
-        const artist = client.languages.get(msg.guild.language).commands.dual.artist
-        const song = client.languages.get(msg.guild.language).commands.dual.song
-        const presenter = client.languages.get(msg.guild.language).commands.dual.presenter
-        const listener_peak = client.languages.get(msg.guild.language).commands.dual.listenerpeak
-        const listeners = client.languages.get(msg.guild.language).commands.dual.listeners
+        // const artist = client.languages.get(msg.guild.language).commands.dual.artist
+        // const song = client.languages.get(msg.guild.language).commands.dual.song
+        // const presenter = client.languages.get(msg.guild.language).commands.dual.presenter
+        // const listener_peak = client.languages.get(msg.guild.language).commands.dual.listenerpeak
+        // const listeners = client.languages.get(msg.guild.language).commands.dual.listeners
         fetch("https://api.dualfm.net/stats").then(res => res.json()).then(res => {
             let fields = [
-                { name: song, value: `${res.now.song}`, inline: true },
-                { name: artist, value: `${res.now.artist}`, inline: true },
-                { name: presenter, value: `${res.presenter.username}`, inline: true },
-                { name: listeners, value: `${res.listeners.current}`, inline: true }
+                { name: 'Song', value: `${res.now.song}`, inline: true },
+                { name: 'Artisit', value: `${res.now.artist}`, inline: true },
+                { name: 'Presenter', value: `${res.presenter.username}`, inline: true },
+                { name: 'Listeners', value: `${res.listeners.current}`, inline: true }
             ]
             const embed = new MessageEmbed()
                 .setTitle('DualFM')

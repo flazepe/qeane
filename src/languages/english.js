@@ -9,7 +9,11 @@ function swap(json) {
 let obj = {
     name: "english",
     commands: {
+<<<<<<< HEAD
         //do NOT touch string/command names, just translate the text after the :s
+=======
+      //  do NOT touch string/command names, just translate the text after the :s
+>>>>>>> 50d62edde829a7637f46f0a634c5def88415ab36
         dual: {
             artist: "Artist",
             song: "Song",
