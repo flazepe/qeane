@@ -6,6 +6,7 @@ module.exports = {
     category: "music",
     async execute(client, msg) {
 
+        return msg.channel.send('Coming soon! OwO. \ndualfm.net')
         // const artist = client.languages.get(msg.guild.language).commands.dual.artist
         // const song = client.languages.get(msg.guild.language).commands.dual.song
         // const presenter = client.languages.get(msg.guild.language).commands.dual.presenter
