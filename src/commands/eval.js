@@ -6,9 +6,7 @@ module.exports = {
     let str = client.languages.get(msg.guild.language).commands.eval
     try {
       const code = msg.args.join(" ");
-      let evaled = require('util').inspect(eval(code));
-      if (evaled instanceof Promise) evaled = await evaled;
-      if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
+      let evaled = require('util').inspect(await eval(code));
       if (evaled.length > 2000) {
         console.log(evaled)
         return msg.reply(str.tooLongText)
